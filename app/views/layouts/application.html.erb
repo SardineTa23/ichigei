@@ -13,13 +13,14 @@
     <header>
       <nav>
         <% if current_user %>
-        <ul>
-          <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
-        </ul>
+          <ul>
+            <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
+            <li><%= link_to 'マイページ', user_path(current_user) %></li>
+          </ul>
         <% elsif current_admin %>
-        <ul>
-          <li><%= link_to 'ログアウト', destroy_admin_session_path, method: :delete %></li>
-        </ul>
+          <ul>
+            <li><%= link_to 'ログアウト', destroy_admin_session_path, method: :delete %></li>
+          </ul>
         <% else %>
           <ul>
             <li><%= link_to 'ログイン', new_user_session_path %></li>
