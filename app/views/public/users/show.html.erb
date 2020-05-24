@@ -1,0 +1,14 @@
+
+<div>
+  @user.name
+</div>
+
+<div>
+  @user.introduction
+</div>
+
+<% if current_user.id == @user.id %>
+  <div>
+    <%= link_to 'マイページを編集する', edit_user_path(current_user), method: :get %>
+  </div>
+<% end %>
