@@ -4,6 +4,7 @@ Rails.application.routes.draw do
      registrations: 'public/registrations'
   }
   scope module: :public do
+    get 'users/confirm', to: 'users#confirm'
     get 'users/withdraw', to: 'users#withdraw'
     resources :users, only: [:show, :edit, :update, :destroy, :index]
   end

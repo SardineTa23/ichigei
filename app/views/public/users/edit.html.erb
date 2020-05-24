@@ -1,4 +1,55 @@
+<div class="container">
+  <h2>User info</h2>
+  <%= form_for @user,:url => {controller: "public/users", action: "update"}, method: :patch do |f| %>
+    <%= render 'layouts/errors', obj: @user %>
 
+    <div class="field">
+      <div>
+        <%= f.label :image %>
+        <%= f.attachment_field :profile_image, placeholder: "プロフィール画像", class: "user-edit-form" %>
+      </div>
+      <div>
+        <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %>
+      </div>
+    </div>
+
+    <div class="field">
+      <%= f.label '名前' %>
+      <%= f.text_field :name %>
+    </div>
+
+    <div class="field">
+      <%= f.label '表示名' %>
+      <%= f.text_field :display_name %>
+    </div>
+
+     <div class="field">
+      <%= f.label :email %>
+      <%= f.text_field :email %>
+    </div>
+
+    <div class="field">
+      <%= f.label 'リング' %>
+      <%= f.text_field :url_link %>
+    </div>
+
+    <div class="field">
+      <%= f.label 'ポートフォリオ' %>
+      <%= f.text_field :portfolio %>
+    </div>
+
+    <div class="field">
+      <%= f.label '自己紹介' %>
+      <%= f.text_area :introduction %>
+    </div>
+
+    <%= f.submit "Update User" %>
+  <% end %>
+
+  <div>
+    <%= button_to '退会する', users_confirm_path, method: :get, params: {user_id: @user.id} %>
+  </div>
+</div>
 
 
 
