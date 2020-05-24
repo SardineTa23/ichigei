@@ -1,17 +1,22 @@
 class Public::UsersController < ApplicationController
   def index
-  end
-
-  def edit
+    @users = User.all
   end
 
   def show
+    @user = User.find(params[:id])
+  end
+
+  def edit
+    @user = User.find(params[:id])
   end
   
   def update
+    @user = User.find(params[:id])
   end
 
   def destroy
+    @user = User.find(params[:id])
   end
 
   def withdraw
