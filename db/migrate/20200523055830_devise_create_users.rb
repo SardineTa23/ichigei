@@ -32,13 +32,21 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
       # t.string   :unlock_token # Only if unlock strategy is :email or :both
       # t.datetime :locked_at
       
-      t.string :display_name
-      t.string :name
-      t.string :phone_number
-      t.string :url_link
-      t.string :portfolio
-      t.text :introduction
-      t.string :profile_image_id
+      t.string :display_name, null: false, default: ''
+      t.string :name, null: false, default: ''
+      t.string :phone_number, null: false, default: ''
+      t.string :url_link, null: false, default: ''
+      t.string :portfolio, null: false, default: ''
+      t.string :postal_code, null: false, default: false
+      t.string :address_city, null: false, default: "" 
+      t.string :address_street, null: false, default: "" 
+      t.string :address_building, null: false, default: "" 
+      t.text :introduction, null: false
+      t.string :profile_image_id, null: false, default: ''
+      t.integer :status, null: false, default: 0
+      t.integer :point, null: false, default: 0
+      t.integer :prefecture_code, null: false, default: 0
+      t.date :birth_date,          null: false
 
       t.timestamps null: false
     end
@@ -47,11 +55,5 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
     add_index :users, :reset_password_token, unique: true
     # add_index :users, :confirmation_token,   unique: true
     # add_index :users, :unlock_token,         unique: true
-
-    add_column :users, :postal_code, :string
-    add_column :users, :prefecture_code, :integer 
-    add_column :users, :address_city, :string
-    add_column :users, :address_street, :string
-    add_column :users, :address_building, :string
   end
 end

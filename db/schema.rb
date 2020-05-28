@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_24_130955) do
+ActiveRecord::Schema.define(version: 2020_05_28_110919) do
 
   create_table "admins", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -24,26 +24,58 @@ ActiveRecord::Schema.define(version: 2020_05_24_130955) do
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
 
+  create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "favorites", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "post_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "post_images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "post_id"
+    t.string "image_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "posts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.string "title", default: "", null: false
+    t.string "content", default: "", null: false
+    t.string "url", default: "", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.string "display_name"
-    t.string "name"
-    t.string "phone_number"
-    t.string "url_link"
-    t.string "portfolio"
-    t.text "introduction"
-    t.string "profile_image_id"
+    t.string "display_name", default: "", null: false
+    t.string "name", default: "", null: false
+    t.string "phone_number", default: "", null: false
+    t.string "url_link", default: "", null: false
+    t.string "portfolio", default: "", null: false
+    t.string "postal_code", default: "0", null: false
+    t.string "address_city", default: "", null: false
+    t.string "address_street", default: "", null: false
+    t.string "address_building", default: "", null: false
+    t.text "introduction", null: false
+    t.string "profile_image_id", default: "", null: false
+    t.integer "status", default: 0, null: false
+    t.integer "point", default: 0, null: false
+    t.integer "prefecture_code", default: 0, null: false
+    t.date "birth_date", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "postal_code"
-    t.integer "prefecture_code"
-    t.string "address_city"
-    t.string "address_street"
-    t.string "address_building"
     t.datetime "deleted_at"
     t.index ["deleted_at"], name: "index_users_on_deleted_at"
     t.index ["email"], name: "index_users_on_email", unique: true
