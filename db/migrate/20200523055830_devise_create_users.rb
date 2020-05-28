@@ -41,12 +41,12 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
       t.string :address_city, null: false, default: "" 
       t.string :address_street, null: false, default: "" 
       t.string :address_building, null: false, default: "" 
-      t.text :introduction, null: false
+      t.text :introduction
       t.string :profile_image_id, null: false, default: ''
       t.integer :status, null: false, default: 0
       t.integer :point, null: false, default: 0
       t.integer :prefecture_code, null: false, default: 0
-      t.date :birth_date,          null: false
+      t.date :birth_date
 
       t.timestamps null: false
     end

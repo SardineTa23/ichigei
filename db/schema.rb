@@ -68,12 +68,12 @@ ActiveRecord::Schema.define(version: 2020_05_28_110919) do
     t.string "address_city", default: "", null: false
     t.string "address_street", default: "", null: false
     t.string "address_building", default: "", null: false
-    t.text "introduction", null: false
+    t.text "introduction"
     t.string "profile_image_id", default: "", null: false
     t.integer "status", default: 0, null: false
     t.integer "point", default: 0, null: false
     t.integer "prefecture_code", default: 0, null: false
-    t.date "birth_date", null: false
+    t.date "birth_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.datetime "deleted_at"

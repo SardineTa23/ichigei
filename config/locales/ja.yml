@@ -1,0 +1,6 @@
+ja:
+  enums:
+    user:
+      status:
+        personal: 個人
+        company: 法人
