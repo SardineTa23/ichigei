@@ -79,3 +79,5 @@ gem "gmaps4rails"
 gem "geocoder"
 gem "mailcatcher"
 gem "letter_opener"
+gem "kaminari"
+gem 'ransack'

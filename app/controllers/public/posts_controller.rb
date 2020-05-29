@@ -1,5 +1,7 @@
 class Public::PostsController < ApplicationController
+  PER = 15
   def index
+    @posts = Post.page(params[:page]).per(PER).order(created_at: :desc)
   end
 
   def show 
@@ -8,6 +10,7 @@ class Public::PostsController < ApplicationController
    
   def create
     @post = current_user.posts.new(post_params)
+    @post.category_id = params[:post][:category].to_i
     if @post.save
       redirect_to user_path(current_user)
     else
@@ -23,6 +26,13 @@ class Public::PostsController < ApplicationController
   end
 
   def destroy
+    post = Post.find(params[:id])
+    if current_user == post.user
+      post.destroy
+      redirect_to user_path(current_user)
+    else
+      redirecto_to root_path
+    end
   end
 
   private

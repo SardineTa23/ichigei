@@ -2,4 +2,6 @@
 
 <%= render "shared/new_post_form", post: @post %>
 
-<%= render "shared/post_index_field", user: current_user %>
+<% if current_user.posts.count != 0 %>
+  <%= render "shared/post_index_field", user: @user, posts: @user.posts.page(params[:page]).per(15).order(created_at: :desc)%>
+<% end %>
