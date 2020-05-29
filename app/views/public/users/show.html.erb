@@ -12,3 +12,7 @@
     <%= link_to 'マイページを編集する', edit_user_path(current_user), method: :get %>
   </div>
 <% end %>
+
+<%= render "shared/new_post_form", post: @post %>
+
+<%= render "shared/post_index_field"%>

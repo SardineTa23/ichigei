@@ -1,0 +1,24 @@
+<div class="post_from">
+  <h3>イチゲイを新規登録</h3>
+  <%= form_for(post) do |f| %>
+      <div class="field row">
+        <%= f.label :title %><br>
+        <%= f.text_field :title, class: "col-xs-12 book_title", value: nil %>
+      </div>
+      <div class="field row">
+        <%= f.label :content %><br>
+        <%= f.text_field :content, class: "col-xs-12 book_body", value: nil %>
+      </div>
+      <div class="field row">
+        <%= f.label :url %><br>
+        <%= f.text_field :url, class: "col-xs-12 book_body", value: nil %>
+      </div>
+      <p>商品画像：<%= f.attachment_field :post_images_images, multiple: true %></p>
+      <p>商品画像：<%= f.attachment_field :post_images_images, multiple: true %></p>
+      <p>商品画像：<%= f.attachment_field :post_images_images, multiple: true %></p>
+      <%= f.collection_select :category, Category.all, :id, :name, {include_blank: '選択してください'} %>
+      <div class="">
+        <%= f.submit "Create Book", method: :post, class: "btn btn-primary col-xs-12"  %>
+      </div>
+    <% end %>
+</div>

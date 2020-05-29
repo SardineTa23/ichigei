@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     get 'users/confirm', to: 'users#confirm'
     get 'users/withdraw', to: 'users#withdraw'
     resources :users, only: [:show, :edit, :update, :destroy, :index]
+    resources :posts
   end
 
   devise_for :admin, :controllers => {
