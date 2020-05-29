@@ -8,7 +8,7 @@
 
 
 #ユーザー
-30.times do |n|
+10.times do |n|
   name  = "User#{n+1}"
   email = "example-#{n+1}@careerWalk.com"
   password = "password"
@@ -19,7 +19,7 @@
   title = "Post#{n+1}"
   content = "Post-content#{n+1}"
   url = "Post-url#{n+1}"
-  30.times do |e|
+  5.times do |e|
     user.posts.create!(title: title, content: content, url: url)
   end
 end

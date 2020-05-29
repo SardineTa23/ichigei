@@ -1,7 +1,8 @@
 class Public::PostsController < ApplicationController
   PER = 15
   def index
-    @posts = Post.page(params[:page]).per(PER).order(created_at: :desc)
+    @q = Post.ransack(params[:q])
+    @posts = @q.result(distinct: true).page(params[:page]).per(PER).order(created_at: :desc)
   end
 
   def show 
