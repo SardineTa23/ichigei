@@ -1,18 +1,5 @@
-
-<div>
-  @user.name
-</div>
-
-<div>
-  @user.introduction
-</div>
-
-<% if current_user.id == @user.id %>
-  <div>
-    <%= link_to 'マイページを編集する', edit_user_path(current_user), method: :get %>
-  </div>
-<% end %>
+<%= render "shared/user_profile", user: @user %>
 
 <%= render "shared/new_post_form", post: @post %>
 
-<%= render "shared/post_index_field"%>
+<%= render "shared/post_index_field", user: current_user %>
