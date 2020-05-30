@@ -16,21 +16,30 @@
                email: email,
                password: password,
                password_confirmation: password)
-  title = "Post#{n+1}"
-  content = "Post-content#{n+1}"
-  url = "Post-url#{n+1}"
+  title = "#{n+1}"
+  content = "content#{n+1}"
+  url = "url#{n+1}"
+  condition = "condition#{n+1}"
+  reward = n + 50
   5.times do |e|
-    user.posts.create!(title: title, content: content, url: url)
+    user.posts.create!(title: "Post#{title}", content: "Post#{content}", url: "Post#{url}")
+    user.works.create!(title: "Work#{title}", description: "Work#{content}", condition: "Work#{condition}", reward: reward)
   end
 end
 
 
 #カテゴリー
 Category.create([
-    { name: 'ruby' },
-    { name: 'ruby_on_rails4' },
-    { name: 'ruby_on_Rails5' },
-    { name: 'python2' },
-    { name: 'python3' },
-    { name: 'django2' }
+    { name: 'プログラミング' },
+    { name: 'マジック（手品）' },
+    { name: 'イラストデザイン' },
+    { name: '講演' },
+    { name: '法律' },
+    { name: '経済' }
+    { name: 'お料理' }
+    { name: '翻訳（ライティング）' }
+    { name: '翻訳(スピーキング）' }
+    { name: '運転' }
+    { name: '漫才' }
+    { name: 'コント' }
   ])

@@ -10,6 +10,8 @@ class User < ApplicationRecord
 
   has_many :favorites
   has_many :posts
+  has_many :works
+  has_many :book_marks
 
   enum status: { personal: 0, company: 1 }
 end
