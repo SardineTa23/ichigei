@@ -1,14 +1,7 @@
+<%= render "shared/user_profile", user: @user %>
 
-<div>
-  @user.name
-</div>
+<%= render "shared/new_post_form", post: @post %>
 
-<div>
-  @user.introduction
-</div>
-
-<% if current_user.id == @user.id %>
-  <div>
-    <%= link_to 'マイページを編集する', edit_user_path(current_user), method: :get %>
-  </div>
+<% if current_user.posts.count != 0 %>
+  <%= render "shared/post_index_field", user: @user, posts: @user.posts.page(params[:page]).per(15).order(created_at: :desc)%>
 <% end %>

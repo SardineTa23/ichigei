@@ -8,4 +8,8 @@ class User < ApplicationRecord
   acts_as_paranoid
   validates :introduction, length: { maximum: 1000 }
 
+  has_many :favorites
+  has_many :posts
+
+  enum status: { personal: 0, company: 1 }
 end

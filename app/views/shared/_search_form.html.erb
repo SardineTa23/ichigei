@@ -1,0 +1,11 @@
+<% if obj.class == Post %>
+  <% path = posts_path%>
+  <% title = 'タイトル'%>
+  <% class_name = 'イチゲイ' %>
+<% end %>
+
+<%= search_form_for(@q, url: path) do |f| %>
+  <p><%= "名称：" %><%= f.search_field :title_cont %></p>
+  <p><%= "カテゴリー"%><%= f.collection_select :category_id_eq, Category.all, :id, :name, :include_blank => '指定なし' %></p>
+  <%= f.submit %>
+<% end %>

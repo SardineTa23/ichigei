@@ -15,3 +15,4 @@ COPY ./Gemfile.lock /mimes/Gemfile.lock
 RUN bundle install
 # ローカルのsrcをコピー
 COPY . /mimes
+ENV LANG C.UTF-8　
