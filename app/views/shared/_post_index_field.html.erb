@@ -25,7 +25,7 @@
             <td></td>
           <% end %>
           <td class=<%= "table__favorite--" + post.id.to_s %>>
-            <%= render 'shared/favorites', post: post, user: post.user %>
+            <%= render 'public/favorites/favorites', post: post, user: current_user %>
           </td>
           <% if post.user == current_user %>
             <td><%= link_to '削除する', post_path(post), method: :delete %></td>

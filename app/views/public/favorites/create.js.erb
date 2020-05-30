@@ -1,0 +1,1 @@
+$(".table__favorite--<%= @post.id.to_s %>").html("<%= j(render partial: 'public/favorites/favorites',  locals: {post: @post, user: current_user}) %>");
