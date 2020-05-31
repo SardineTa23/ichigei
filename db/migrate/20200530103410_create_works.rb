@@ -4,6 +4,7 @@ class CreateWorks < ActiveRecord::Migration[5.2]
       t.integer :user_id, null: false
       t.integer :category_id
       t.integer :recruitment_status, null: false, default: 0
+      t.string :image_id
       t.string :title, null: false
       t.text :description
       t.text :condition

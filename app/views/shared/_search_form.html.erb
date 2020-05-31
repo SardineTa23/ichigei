@@ -2,10 +2,14 @@
   <% path = posts_path%>
   <% title = 'タイトル'%>
   <% class_name = 'イチゲイ' %>
+<% else %>
+  <% path = works_path%>
+  <% title = '仕事名' %>
+  <% class_name = '仕事' %>
 <% end %>
 
 <%= search_form_for(@q, url: path) do |f| %>
-  <p><%= "名称：" %><%= f.search_field :title_cont %></p>
+  <p><%= "名前で検索：" %><%= f.search_field :title_cont %></p>
   <p><%= "カテゴリー"%><%= f.collection_select :category_id_eq, Category.all, :id, :name, :include_blank => '指定なし' %></p>
   <%= f.submit %>
 <% end %>

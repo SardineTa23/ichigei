@@ -1,8 +1,7 @@
 class Public::PostsController < ApplicationController
-  PER = 15
   def index
     @q = Post.ransack(params[:q])
-    @posts = @q.result(distinct: true).page(params[:page]).per(PER).order(created_at: :desc)
+    @posts = @q.result(distinct: true).page(params[:page]).per(20).order(created_at: :desc)
   end
 
   def show 
@@ -37,8 +36,7 @@ class Public::PostsController < ApplicationController
   end
 
   private
-
     def post_params
-      params.require(:post).permit(:title, :content, :url, post_images_images: [])
+      params.require(:post).permit(:title, :content, :url, :image)
     end
 end

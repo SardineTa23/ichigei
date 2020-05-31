@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class ImageTest < ActiveSupport::TestCase
+class Public::BookMarksControllerTest < ActionDispatch::IntegrationTest
   # test "the truth" do
   #   assert true
   # end

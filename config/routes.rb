@@ -10,6 +10,9 @@ Rails.application.routes.draw do
     resources :posts, only: [:show, :create, :destroy, :index] do
       resource :favorites, only: [:create, :destroy]
     end
+    resources :works do
+      resource :book_marks, only: [:create, :destroy]
+    end
   end
 
   devise_for :admin, :controllers => {

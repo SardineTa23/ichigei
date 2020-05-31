@@ -4,6 +4,11 @@ ja:
       status:
         personal: 個人
         company: 法人
+    work: 
+      recruitment_status:
+        recruiting: '募集中'
+        recruitment_suspended: 募集停止
+        end_recruitment: 募集終了
   views:
     pagination:
       first: "&laquo; 最初"
