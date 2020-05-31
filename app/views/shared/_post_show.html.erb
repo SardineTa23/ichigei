@@ -9,9 +9,7 @@
 <div>
   <p><%= post.content %></p>
   <div>
-    <% post.post_images.each do |img| %>
-      <%= attachment_image_tag img, :image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %>
-    <% end %>
+    <%= attachment_image_tag(post, :image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg") %>
   </div>
 </div>
 

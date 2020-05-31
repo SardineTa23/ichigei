@@ -22,12 +22,7 @@
   </div>
   <div class="field">
     <%= f.label '画像をアップロード' %>
-    <p class="img-1">画像1：<%= f.attachment_field :images_images, multiple: true %></p>
-    <p class="img-2">画像2：<%= f.attachment_field :images_images, multiple: true %></p>
-    <p class="img-3">画像3：<%= f.attachment_field :images_images, multiple: true %></p>
-    <p class="img-4">画像4：<%= f.attachment_field :images_images, multiple: true %></p>
-    <p class="img-5">画像5：<%= f.attachment_field :images_images, multiple: true %></p>
-    <p class="img-6">画像6：<%= f.attachment_field :images_images, multiple: true %></p>
+    <p class="img-1">画像1：<%= f.attachment_field :image %></p>
   </div>
   <div class="field">
     <%= f.label :started_at, '勤務開始日時' %>
@@ -35,17 +30,17 @@
       f.datetime_select(
         :started_at,
         {
-          start_year:     Time.zone.now.year,# 選択可能な開始年
-          end_year:       Time.zone.now.next_year.year,# 選択可能な終了年
-          default:        Time.zone.now,# デフォルトの年
-          use_two_digit_numbers: true,# 月日を2桁の値で表示
-          date_separator: '%s',# 年, 月
-          datetime_separator: '%s',# 日
-          time_separator: '%s'# 時
-        },# オプション
-        { class: 'date-select' }# htmlオプションを指定する場合は別で指定
+          start_year:     Time.zone.now.year,
+          end_year:       Time.zone.now.next_year.year,
+          default:        Time.zone.now,
+          use_two_digit_numbers: true,
+          date_separator: '%s',
+          datetime_separator: '%s',
+          time_separator: '%s'
+        },
+        { class: 'date-select' }
       ),
-      '年 ', '月 ', '日 ', '時 ') + '分'# 分 は最後につけ加えられる
+      '年 ', '月 ', '日 ', '時 ') + '分'
     %>
   </div>
   <div class="field">
@@ -54,17 +49,17 @@
       f.datetime_select(
         :ended_at,
         {
-          start_year:     Time.zone.now.year,# 選択可能な開始年
-          end_year:       Time.zone.now.next_year.year,# 選択可能な終了年
-          default:        Time.zone.now,# デフォルトの年
-          use_two_digit_numbers: true,# 月日を2桁の値で表示
-          date_separator: '%s',# 年, 月
-          datetime_separator: '%s',# 日
-          time_separator: '%s'# 時
-        },# オプション
-        { class: 'date-select' }# htmlオプションを指定する場合は別で指定
+          start_year:     Time.zone.now.year,
+          end_year:       Time.zone.now.next_year.year,
+          default:        Time.zone.now,
+          use_two_digit_numbers: true,
+          date_separator: '%s',
+          datetime_separator: '%s',
+          time_separator: '%s'
+        },
+        { class: 'date-select' }
       ),
-      '年 ', '月 ', '日 ', '時 ') + '分'# 分 は最後につけ加えられる
+      '年 ', '月 ', '日 ', '時 ') + '分'
     %>
   </div>
   

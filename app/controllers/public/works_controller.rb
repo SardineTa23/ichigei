@@ -27,6 +27,11 @@ class Public::WorksController < ApplicationController
 
   def update
     @work = Work.find(params[:id])
+    if @work.update(work_params)
+      redirect_to work_path(@work)
+    else
+      render :edit
+    end
   end
 
   def destroy
@@ -35,6 +40,6 @@ class Public::WorksController < ApplicationController
 
   private
     def work_params
-      params.require(:work).permit(:title, :description, :condition,:started_at, :ended_at, :reward, :recruitment_status, post_images_images: [])                          
+      params.require(:work).permit(:title, :description, :condition,:started_at, :ended_at, :reward, :recruitment_status, :image)                          
     end
 end

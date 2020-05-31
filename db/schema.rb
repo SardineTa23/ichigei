@@ -44,23 +44,10 @@ ActiveRecord::Schema.define(version: 2020_05_30_110816) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "work_id", null: false
-    t.string "image_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "post_images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "post_id"
-    t.string "image_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "posts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "category_id"
+    t.string "image_id"
     t.string "title", default: "", null: false
     t.string "content", default: "", null: false
     t.string "url", default: "", null: false
@@ -103,6 +90,7 @@ ActiveRecord::Schema.define(version: 2020_05_30_110816) do
     t.integer "user_id", null: false
     t.integer "category_id"
     t.integer "recruitment_status", default: 0, null: false
+    t.string "image_id"
     t.string "title", null: false
     t.text "description"
     t.text "condition"

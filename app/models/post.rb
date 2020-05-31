@@ -1,7 +1,6 @@
 class Post < ApplicationRecord
   acts_as_paranoid
-  has_many :post_images
-  accepts_attachments_for :post_images, attachment: :image
+  attachment :image, destroy: false
   has_many :favorites
   belongs_to :user
   belongs_to :category, optional: true

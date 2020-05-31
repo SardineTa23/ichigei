@@ -13,9 +13,7 @@
         <%= f.label :url %><br>
         <%= f.text_field :url, class: "col-xs-8 book_body", value: nil %>
       </div>
-      <p>画像1：<%= f.attachment_field :post_images_images, multiple: true %></p>
-      <p>画像2：<%= f.attachment_field :post_images_images, multiple: true %></p>
-      <p>画像3：<%= f.attachment_field :post_images_images, multiple: true %></p>
+      <p>画像1：<%= f.attachment_field :image %></p>
       <%= f.collection_select :category, Category.all, :id, :name, {include_blank: '選択してください'} %>
       <div class="">
         <%= f.submit "Create", method: :post, class: "btn btn-primary col-xs-8"  %>

@@ -26,5 +26,11 @@
       <%= @work.ended_at.to_s(:datetime_jp) %>
     </tr><br>
 
+   
+
   </table>
 </div>
+
+<% if @work.user == current_user %>
+  <%= link_to 'この求人を編集する', edit_work_path(@work)%>
+<% end %>
