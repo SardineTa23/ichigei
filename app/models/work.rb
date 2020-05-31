@@ -7,6 +7,6 @@ class Work < ApplicationRecord
   belongs_to :category, optional: true
 
   enum recruitment_status: { recruiting: 0,
-                             recruitment_suspended: 1
+                             recruitment_suspended: 1,
                              end_recruitment: 2 }
 end

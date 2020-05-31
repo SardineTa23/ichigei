@@ -1,0 +1,30 @@
+<h3><%= @work.title %></h3>
+
+<div class="table">
+  <table>
+    <tr>
+      <%= @work.description %>
+    </tr><br>
+
+    <tr>
+      <%= @work.condition %>
+    </tr><br>
+
+    <tr>
+      <%= @work.reward.to_s %>
+    </tr><br>
+
+    <tr>
+      <%= @work.created_at.to_s(:datetime_jp) %>
+    </tr><br>
+
+    <tr>
+      <%= @work.started_at.to_s(:datetime_jp) %>
+    </tr><br>
+
+    <tr>
+      <%= @work.ended_at.to_s(:datetime_jp) %>
+    </tr><br>
+
+  </table>
+</div>
