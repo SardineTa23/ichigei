@@ -2,6 +2,7 @@ class Work < ApplicationRecord
   acts_as_paranoid
   attachment :image, destroy: false
   has_many :book_marks
+  has_many :entries
   belongs_to :user
   belongs_to :category, optional: true
 

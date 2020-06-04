@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     resources :works do
       resource :book_marks, only: [:create, :destroy]
     end
+    resources :entries, only: [:show, :index, :create]
   end
 
   devise_for :admin, :controllers => {

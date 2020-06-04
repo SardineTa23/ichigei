@@ -9,6 +9,11 @@ ja:
         recruiting: '募集中'
         recruitment_suspended: 募集停止
         end_recruitment: 募集終了
+    entry: 
+      working_status:
+        unsettled: 未確定
+        confirmed: 確定済み
+        completed: 処理済み
   views:
     pagination:
       first: "&laquo; 最初"
