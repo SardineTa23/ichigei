@@ -31,6 +31,13 @@
   </table>
 </div>
 
+<div class='entry-form'>
+  <% if current_user.check_entry(@work) == nil %>
+    <%= button_to 'この求人に応募する', entries_path(work_id: @work), method: :post %>
+  <% end %>
+</div>
+
+
 <% if @work.user == current_user %>
   <%= link_to 'この求人を編集する', edit_work_path(@work)%>
 <% end %>

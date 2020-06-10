@@ -15,4 +15,8 @@ class User < ApplicationRecord
   has_many :entries
 
   enum status: { personal: 0, company: 1 }
+
+  def check_entry(work)
+    Entry.find_by(work_id: work.id, user_id: self.id)
+  end
 end

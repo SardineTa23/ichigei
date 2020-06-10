@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   scope module: :public do
     get 'users/confirm', to: 'users#confirm'
     get 'users/withdraw', to: 'users#withdraw'
+    resources :entries, only: [:show, :create]
     resources :users, only: [:show, :edit, :update, :destroy, :index]
     resources :posts, only: [:show, :create, :destroy, :index] do
       resource :favorites, only: [:create, :destroy]
@@ -13,7 +14,6 @@ Rails.application.routes.draw do
     resources :works do
       resource :book_marks, only: [:create, :destroy]
     end
-    resources :entries, only: [:show, :index, :create]
   end
 
   devise_for :admin, :controllers => {

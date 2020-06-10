@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_01_082752) do
+ActiveRecord::Schema.define(version: 2020_06_10_142437) do
 
   create_table "admins", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -107,8 +107,8 @@ ActiveRecord::Schema.define(version: 2020_06_01_082752) do
     t.string "address_street", default: "", null: false
     t.string "address_building", default: "", null: false
     t.datetime "deleted_at"
-    t.datetime "started_at"
-    t.datetime "ended_at"
+    t.datetime "started_at", default: -> { "CURRENT_TIMESTAMP" }
+    t.datetime "ended_at", default: -> { "CURRENT_TIMESTAMP" }
     t.integer "reward"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
