@@ -1,0 +1,22 @@
+<div class="message_list">
+  <% @room.messages.each do |msg| %>
+    <% if msg.user == @room.entries.first.user %>
+      <div class="applied_user_msg">
+        <%= attachment_image_tag(msg.user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg") %>
+        <p><%= msg.message %></p>
+      </div>
+    <% else %>
+      <div class="recruited_user_msg">
+        <%= attachment_image_tag(msg.user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg") %>
+        <p><%= msg.message %></p>
+      </div>
+    <% end %>
+  <% end %>
+</div>
+<div class="message_field">
+  <%= form_for(@room.messages.new) do |f| %>
+    <%= f.text_area :message %>
+    <%= hidden_field_tag :room_id, @room.id %>
+    <%= f.submit '送信' %>
+  <% end %>
+</div>

@@ -1,0 +1,4 @@
+<% @work.entries.each do |entry| %>
+  <%= entry.user.display_name %>
+  <%= link_to 'メッセージルームへ', room_path(entry.room) %>
+<% end %>

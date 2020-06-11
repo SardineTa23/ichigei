@@ -10,7 +10,8 @@ class Public::EntriesController < ApplicationController
   def create
     work = Work.find(params[:work_id])
     if  current_user.check_entry(work) == nil
-      @entry = current_user.entries.create(work_id: work.id)
+      room = Room.create
+      @entry = current_user.entries.create(work_id: work.id, room_id: room.id)
       redirect_to work_path(work)
     end
   end

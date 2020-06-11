@@ -13,6 +13,7 @@ class User < ApplicationRecord
   has_many :works
   has_many :book_marks
   has_many :entries
+  has_many :messages
 
   enum status: { personal: 0, company: 1 }
 
