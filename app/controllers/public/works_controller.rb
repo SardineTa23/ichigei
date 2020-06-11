@@ -4,8 +4,17 @@ class Public::WorksController < ApplicationController
     @works = @q.result(distinct: true).page(params[:page]).per(20).order(created_at: :desc)
   end
 
+  def my_works
+    @works = current_user.works
+  end
+
+  def my_work_entries
+    @work = Work.find(params[:id])
+  end
+
   def show
     @work = Work.find(params[:id])
+    @entry = Entry.find_by(work_id: @work.id, user_id: current_user.id)
   end
 
   def new

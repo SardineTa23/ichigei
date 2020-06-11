@@ -32,10 +32,14 @@
 </div>
 
 <div class='entry-form'>
-  <% if current_user.check_entry(@work) == nil %>
-    <%= button_to 'この求人に応募する', entries_path(work_id: @work), method: :post %>
+  <% if @work.user == current_user %>
+    <%= button_to 'この求人の応募者一覧', self_work_entries_path(@work), method: :get %>
   <% else %>
-    <%= button_to '応募済みの求人です、メッセージへ'%>
+    <% if current_user.check_entry(@work) == nil %>
+      <%= button_to 'この求人に応募する', entries_path(work_id: @work), method: :post %>
+    <% else %>
+      <%= button_to '応募済みの求人です、メッセージへ', room_path(@entry.room), method: :get %>
+    <% end %>
   <% end %>
 </div>
 
