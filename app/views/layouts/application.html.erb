@@ -10,10 +10,13 @@
   </head>
 
   <body>
-    <header>
-      <nav>
+    <header class="clearfix">
+      <div class="logo">
+        <%= link_to 'Ichigei', root_path %>
+      </div>
+      <nav class='header-nav'>
         <% if current_user %>
-          <ul>
+          <ul class="nav-list">
             <li><%= link_to 'トップページへ', root_path %></li>
             <li><%= link_to 'マイページ', user_path(current_user) %></li>
             <li><%= link_to 'みんなの投稿一覧', posts_path %></li>
@@ -22,12 +25,12 @@
             <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
           </ul>
         <% elsif current_admin %>
-          <ul>
+          <ul class="nav-list">
             <li><%= link_to 'トップページへ', root_path %></li>
             <li><%= link_to 'ログアウト', destroy_admin_session_path, method: :delete %></li>
           </ul>
         <% else %>
-          <ul>
+          <ul class="nav-list">
             <li><%= link_to 'トップページへ', root_path %></li>
             <li><%= link_to 'ログイン', new_user_session_path %></li>
             <li><%= link_to '会員登録', new_user_registration_path %></li>
@@ -35,6 +38,8 @@
         <% end %>
       </nav>
     </header>
-    <%= yield %>
+    <main>
+      <%= yield %>
+    </main>
   </body>
 </html>

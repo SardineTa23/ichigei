@@ -20,4 +20,68 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  text-decoration: none;
+  list-style: none;
+ }
+
+.clearfix::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+header {
+  margin: 0 auto;
+  width: 90%;
+  height: 120px;
+  position: relative;
+}
+
+.logo {
+  position: absolute;
+  width: 15%;
+  display: inline-block;
+  font-weight: bold;
+  color: black;
+  top: 40px;
+  background-color: ghostwhite ;
+  text-align: center;
+}
+
+.logo a {
+  color: black;
+  font-size: 50px;
+}
+
+.header-nav {
+  position: absolute;
+  top: 60px;
+  right: 5%;
+  display: inline-block;
+  width: 75%;
+}
+
+.nav-list {
+  margin:0 0 0 auto;
+  overflow: hidden;
+}
+
+.nav-list li {
+  width: 200px;
+  text-align: center;
+  background-color: ghostwhite;
+  display: inline-block;
+}
+
+.nav-list li a {
+  text-decoration: none;
+  font-weight: bold;
+  color: black;
+  font-size: 20px;
+}
+
+ main {
+   width: 90%;
+   text-align: center;
+   margin: 0 auto;
  }
