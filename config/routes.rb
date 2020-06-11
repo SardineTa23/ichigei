@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   scope module: :public do
     get 'users/confirm', to: 'users#confirm'
     get 'users/withdraw', to: 'users#withdraw'
-    resources :entries, only: [:show, :create]
+    resources :entries, only: [:show, :create, :index]
     resources :users, only: [:show, :edit, :update, :destroy, :index]
     resources :posts, only: [:show, :create, :destroy, :index] do
       resource :favorites, only: [:create, :destroy]

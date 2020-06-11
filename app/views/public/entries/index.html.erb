@@ -1,0 +1,8 @@
+<div class="erries_index">
+  <% @entries.each do |entry| %>
+    <table class='table'>
+      <tr><%= link_to entry.work.title, work_path(entry.work) %></tr>
+      <tr><p>応募日時</p><%= entry.created_at.to_s(:datetime_jp)%></tr>
+    </table>
+  <% end %>
+</div>

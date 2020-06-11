@@ -1,4 +1,8 @@
 class Public::EntriesController < ApplicationController
+  def index
+    @entries = current_user.entries
+  end
+  
   def show
     @entry = Entry.find(params[:id])
   end

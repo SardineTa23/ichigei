@@ -34,6 +34,8 @@
 <div class='entry-form'>
   <% if current_user.check_entry(@work) == nil %>
     <%= button_to 'この求人に応募する', entries_path(work_id: @work), method: :post %>
+  <% else %>
+    <%= button_to '応募済みの求人です、メッセージへ'%>
   <% end %>
 </div>
 
