@@ -1,7 +1,8 @@
 <div class="user_show clearfix">
   <div class="left_form">
     <div class="links">
-      <%= link_to '応募した求人一覧', entries_path %><br>
+      <h3>Menu</h3>
+      <%= link_to '応募した求人一覧', entries_path %>
       <%= link_to '募集した求人一覧', works_my_works_path %>
     </div>
     <%= render "shared/new_post_form", post: @post %>

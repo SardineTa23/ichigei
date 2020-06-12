@@ -1,5 +1,6 @@
 <div class="post_form">
   <h3>イチゲイを新規登録</h3>
+  <%= render 'layouts/errors', obj: post %>
   <%= form_for(post) do |f| %>
       <div class="field">
         <%= f.label :title %><br>
@@ -13,10 +14,16 @@
         <%= f.label :url %><br>
         <%= f.text_field :url, class: "", value: nil, :size=>"50" %>
       </div>
-      <p>画像<%= f.attachment_field :image %></p>
-      <%= f.collection_select :category, Category.all, :id, :name, {include_blank: '選択してください'} %>
+      <div class="field">
+        <%= f.label "画像" %><br>
+        <%= f.attachment_field :image %>
+      </div>
+      <div class="field">
+        <%= f.label "イチゲイのジャンル" %><br>
+        <%= f.collection_select :category, Category.all, :id, :name, {include_blank: '選択してください'} %>
+      </div>
       <div class="">
-        <%= f.submit "Create", method: :post, class: "btn btn-primary"  %>
+        <%= f.submit "新たなイチゲイとして投稿する", method: :post, class: "btn btn-primary"  %>
       </div>
     <% end %>
 </div>

@@ -16,7 +16,7 @@
       </div>
       <nav class='header-nav'>
         <% if current_user %>
-          <ul class="nav-list">
+          <ul class="nav-list clearfix">
             <li><%= link_to 'トップページへ', root_path %></li>
             <li><%= link_to 'マイページ', user_path(current_user) %></li>
             <li><%= link_to 'みんなの投稿一覧', posts_path %></li>

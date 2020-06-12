@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     get 'works/my_works', to: 'works#my_works'
     get 'works/:id/self_work_entries', to: 'works#my_work_entries', as: 'self_work_entries'
     resources :entries, only: [:show, :create, :index]
+    resources :portfolios, only: [:new, :create, :edit, :destroy, :update]
     resources :users, only: [:show, :edit, :update, :destroy, :index]
     resources :messages, only: [:create]
     resources :rooms, only: [:show]

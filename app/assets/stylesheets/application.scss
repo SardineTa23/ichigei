@@ -33,19 +33,20 @@
 header {
   margin: 0 auto;
   width: 90%;
-  height: 120px;
+  height: 100px;
   position: relative;
 }
 
 .logo {
   position: absolute;
   width: 15%;
-  display: inline-block;
+  float: left;
   font-weight: bold;
   color: black;
-  top: 40px;
-  background-color: ghostwhite ;
+  top: 20px;
+  background-color: rgb(228, 228, 253) ;
   text-align: center;
+  border-radius: 10px;
 }
 
 .logo a {
@@ -55,9 +56,9 @@ header {
 
 .header-nav {
   position: absolute;
-  top: 60px;
+  top: 40px;
   right: 5%;
-  display: inline-block;
+  float: left;
   width: 75%;
 }
 
@@ -69,8 +70,9 @@ header {
 .nav-list li {
   width: 200px;
   text-align: center;
-  background-color: ghostwhite;
+  background-color: rgb(228, 228, 253);
   display: inline-block;
+  border-radius: 5px;
 }
 
 .nav-list li a {
@@ -81,7 +83,7 @@ header {
 }
 
 footer{
-  height: 150px;
+  height: 100px;
   width: 90%;
   margin: 0 auto;
 }
@@ -89,6 +91,7 @@ footer{
  main {
    width: 90%;
    margin: 0 auto;
+   padding: 10px 0;
    border-top: 15px solid #c7c3c7;
    border-bottom: 15px solid #c7c3c7;
  }
@@ -126,9 +129,16 @@ h2, h3 {
    float: left;
  }
 
+ .links {
+   margin-top: 20px;
+ }
+
  .links a {
    background-color: gainsboro;
    color: black;
+   border-radius: 5px;
+   padding: 2px;
+   margin-bottom: 2px;
  }
 
  .user-profile{
@@ -148,4 +158,21 @@ h2, h3 {
    display: inline-block;
    width: 95%;
    margin-left: 20px;
+   word-break: break-all;
+ }
+
+ .portfolio-tsuika {
+   margin-left: 50px;
+   background-color: gainsboro;
+   font-weight: bold;
+   color: black;
+   padding: 5px;
+   border-radius: 5px;
+ }
+ 
+ .portfolio-content {
+   padding-bottom: 5px;
+   margin-bottom: 20px;
+   border-bottom: 2px solid #c7c3c7;
+
  }
