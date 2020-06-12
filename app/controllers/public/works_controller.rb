@@ -1,4 +1,5 @@
 class Public::WorksController < ApplicationController
+  before_action :authenticate_user!
   def index
     @q = Work.where(recruitment_status: 0).ransack(params[:q])
     @works = @q.result(distinct: true).page(params[:page]).per(20).order(created_at: :desc)

@@ -1,23 +1,22 @@
-<div class="container">
-  <h2>ポートフォリオ追加</h2>
-  <%= form_for(@portfolio) do |f| %>
-    <%= render 'layouts/errors', obj: @portfolio %>
 
-    <div class="field">
-      <%= f.label 'タイトル' %><br>
-      <%= f.text_field :title, :size=>"60" %>
-    </div>
+<h2>ポートフォリオ追加</h2>
+<%= form_for(@portfolio) do |f| %>
+  <%= render 'layouts/errors', obj: @portfolio %>
 
-    <div class="field">
-      <%= f.label 'URLリンク(Github, Youtube等)' %><br>
-      <%= f.text_field :link, :size=>"60" %>
-    </div>
+  <div class="field">
+    <%= f.label 'タイトル' %><br>
+    <%= f.text_field :title, :size=>"60" %>
+  </div>
 
-    <div class="field">
-      <%= f.label '説明文（こだわったポイント、実装期間など）' %><br>
-      <%= f.text_area :description, :size=>"60x10" %>
-    </div>
+  <div class="field">
+    <%= f.label 'URLリンク(Github, Youtube等)' %><br>
+    <%= f.text_field :link, :size=>"60" %>
+  </div>
 
-    <%= f.submit "制作物（ポートフォリオ）を追加する", class: 'btn btn-primary' %>
-  <% end %>
-</div>
+  <div class="field">
+    <%= f.label '説明文（こだわったポイント、実装期間など）' %><br>
+    <%= f.text_area :description, :size=>"60x10" %>
+  </div>
+
+  <%= f.submit "制作物（ポートフォリオ）を追加する", class: 'btn btn-primary' %>
+<% end %>

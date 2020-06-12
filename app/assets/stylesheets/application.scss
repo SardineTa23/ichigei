@@ -32,9 +32,14 @@
 
 header {
   margin: 0 auto;
-  width: 90%;
   height: 100px;
   position: relative;
+}
+
+.header-content {
+  width: 90%;
+  height: 100%;
+  margin: 0 auto;
 }
 
 .logo {
@@ -63,7 +68,8 @@ header {
 }
 
 .nav-list {
-  margin:0 0 0 auto;
+  width: 95%;
+  margin-left: 5%;
   overflow: hidden;
 }
 
@@ -84,16 +90,13 @@ header {
 
 footer{
   height: 100px;
-  width: 90%;
-  margin: 0 auto;
 }
 
  main {
-   width: 90%;
-   margin: 0 auto;
+   margin: 10px auto;
    padding: 10px 0;
-   border-top: 15px solid #c7c3c7;
-   border-bottom: 15px solid #c7c3c7;
+   border-top: 5px solid  #f3f1f3;
+   border-bottom: 5px solid #f3f1f3;
  }
 
 h2, h3 {
@@ -101,6 +104,8 @@ h2, h3 {
 }
 
 .container {
+  width: 90%;
+  margin: 0 auto;
   margin-bottom: 10px;
 }
 

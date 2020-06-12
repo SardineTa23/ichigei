@@ -1,4 +1,5 @@
 class Public::PortfoliosController < ApplicationController
+  before_action :authenticate_user!
   def new
     @portfolio = Portfolio.new
   end
