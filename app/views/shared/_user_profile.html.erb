@@ -1,12 +1,29 @@
-<div>
-  <%= user.display_name %>
-</div>
-<div>
-  <%= user.introduction %>
-</div>
-
-<% if current_user.id == @user.id %>
-  <div>
-    <%= link_to 'マイページを編集する', edit_user_path(current_user), method: :get %>
+<div class='user-profile'>
+  <h3>プロフィール</h3><%= button_to 'マイページを編集する', edit_user_path(current_user), method: :get %>
+  <div class="profile-content">
+    <p class='profile-label'>ユーザーの形式</p>
+    <p class='profile-item'><%= user.status_i18n %></p>
   </div>
-<% end %>
+  <div class="profile-content">
+    <p class='profile-label'>名前</p>
+    <p class='profile-item'><%= user.display_name %></p>
+  </div>
+  <div class="profile-content">
+    <p class='profile-label'>紹介文</p>
+    <p class='profile-item'><%= user.introduction %></p>
+  </div>
+  <div class="profile-content">
+    <p class='profile-label'>ポートフォリオ</p>
+    <p class='profile-item'><%= link_to user.portfolio, user.portfolio %></p>
+  </div>
+  <div class="profile-content">
+    <p class='profile-label'>ユーザーのリンク（twitter, github, Youtube等）</p>
+    <p class='profile-item'><%= link_to user.url_link, user.url_link %></p>
+  </div>
+
+  <% if current_user.id == @user.id %>
+    <div>
+      <%= link_to 'マイページを編集する', edit_user_path(current_user), method: :get %>
+    </div>
+  <% end %>
+</div>

@@ -1,22 +1,22 @@
-<div class="post_from">
+<div class="post_form">
   <h3>イチゲイを新規登録</h3>
   <%= form_for(post) do |f| %>
-      <div class="field row">
+      <div class="field">
         <%= f.label :title %><br>
-        <%= f.text_field :title, class: "col-xs-8 book_title", value: nil %>
+        <%= f.text_field :title, class: "", value: nil, :size=>"50" %>
       </div>
-      <div class="field row">
+      <div class="field">
         <%= f.label :content %><br>
-        <%= f.text_field :content, class: "col-xs-8 book_body", value: nil %>
+        <%= f.text_area :content, class: "", value: nil, :size=>"50" %>
       </div>
-      <div class="field row">
+      <div class="field">
         <%= f.label :url %><br>
-        <%= f.text_field :url, class: "col-xs-8 book_body", value: nil %>
+        <%= f.text_field :url, class: "", value: nil, :size=>"50" %>
       </div>
-      <p>画像1：<%= f.attachment_field :image %></p>
+      <p>画像<%= f.attachment_field :image %></p>
       <%= f.collection_select :category, Category.all, :id, :name, {include_blank: '選択してください'} %>
       <div class="">
-        <%= f.submit "Create", method: :post, class: "btn btn-primary col-xs-8"  %>
+        <%= f.submit "Create", method: :post, class: "btn btn-primary"  %>
       </div>
     <% end %>
 </div>

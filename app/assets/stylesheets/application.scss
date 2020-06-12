@@ -80,8 +80,72 @@ header {
   font-size: 20px;
 }
 
+footer{
+  height: 150px;
+  width: 90%;
+  margin: 0 auto;
+}
+
  main {
    width: 90%;
-   text-align: center;
    margin: 0 auto;
+   border-top: 15px solid #c7c3c7;
+   border-bottom: 15px solid #c7c3c7;
+ }
+
+h2, h3 {
+  font-weight: bold;
+}
+
+.container {
+  margin-bottom: 10px;
+}
+
+ .profile_image {
+  border-radius: 50%; 
+ }
+
+ .field {
+   margin-bottom: 10px;
+ }
+
+ .button {
+   background-color: ghostwhite;
+   display: inline-block;
+   font-weight: bold;
+ }
+
+ #user-prolile-image {
+   background-color: ghostwhite;
+   display: inline-block;
+   font-weight: bold;
+ }
+
+ .left_form {
+   width: 35%;
+   float: left;
+ }
+
+ .links a {
+   background-color: gainsboro;
+   color: black;
+ }
+
+ .user-profile{
+   float: left;
+   width: 65%;
+ }
+
+ .profile-content {
+   margin-bottom: 15px;
+ }
+
+ .profile-label {
+   font-weight: bold;
+ }
+
+ .profile-item {
+   display: inline-block;
+   width: 95%;
+   margin-left: 20px;
  }

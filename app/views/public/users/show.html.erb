@@ -1,9 +1,13 @@
-<%= render "shared/user_profile", user: @user %>
-
-<%= render "shared/new_post_form", post: @post %>
-
-<%= link_to '応募した求人一覧', entries_path %>
-<%= link_to '募集した求人一覧', works_my_works_path %>
+<div class="user_show clearfix">
+  <div class="left_form">
+    <div class="links">
+      <%= link_to '応募した求人一覧', entries_path %><br>
+      <%= link_to '募集した求人一覧', works_my_works_path %>
+    </div>
+    <%= render "shared/new_post_form", post: @post %>
+  </div>
+  <%= render "shared/user_profile", user: @user %>
+</div>
 
 <% if current_user.posts.count != 0 %>
   <%= render "shared/post_index_field", user: @user, posts: @user.posts.page(params[:page]).per(15).order(created_at: :desc)%>
