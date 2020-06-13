@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     get 'works/:id/self_work_entries', to: 'works#my_work_entries', as: 'self_work_entries'
     get 'favorites', to: 'favorites#index'
     get 'book_marks', to: 'book_marks#index'
+    post 'entries/scout', to: 'entries#scout'
     resources :entries, only: [:show, :create, :index]
     resources :portfolios, only: [:new, :create, :edit, :destroy, :update]
     resources :users, only: [:show, :edit, :update, :destroy, :index]

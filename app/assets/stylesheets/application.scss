@@ -181,5 +181,65 @@ h2, h3 {
    padding-bottom: 5px;
    margin-bottom: 20px;
    border-bottom: 2px solid #c7c3c7;
+ }
 
+ .msg-left {
+   float: left;
+   width: 20%;
+ }
+
+ .message_field {
+   margin-top: 50px;
+ }
+
+ .message_lists {
+   width: 80%;
+   float: left;
+ }
+
+ .msg-list {
+   height: 100px;
+   width: 70%;
+   margin: 0 auto;
+ }
+
+ .user-show-link {
+   float: left;
+   height: 100%;
+   width: 100px
+ }
+
+ .message-content {
+   word-break: break-all;
+   width: 300px;
+   border-radius: 10px;
+   padding: 10px;
+   float: left;
+   height: 80%;
+   background-color: gainsboro;
+ }
+
+ .user-show-link-r {
+   float: right;
+   height: 100%;
+   width: 100px
+ }
+
+ .user-show-link-r img, .user-show-link-r p {
+   margin: 0 auto;
+   display: inline-block;
+ }
+
+ .user-show-link img, .user-show-link p {
+   
+ }
+
+ .message-content-r {
+   word-break: break-all;
+   width: 300px;
+   border-radius: 10px;
+   padding: 10px;
+   float: right;
+   height: 80%;
+   background-color: gainsboro;
  }

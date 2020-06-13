@@ -1,7 +1,7 @@
 <div class="post_form">
   <h3>イチゲイを新規登録</h3>
   <%= render 'layouts/errors', obj: post %>
-  <%= form_for(post) do |f| %>
+  <%= form_for(post, url: {controller: 'public/posts', action: 'create'}, method: :post) do |f| %>
       <div class="field">
         <%= f.label :title %><br>
         <%= f.text_field :title, class: "", value: nil, :size=>"50" %>
@@ -23,7 +23,7 @@
         <%= f.collection_select :category, Category.all, :id, :name, {include_blank: '選択してください'} %>
       </div>
       <div class="">
-        <%= f.submit "新たなイチゲイとして投稿する", method: :post, class: "btn btn-primary"  %>
+        <%= f.submit "新たなイチゲイを投稿する", method: :post, class: "btn btn-primary"  %>
       </div>
     <% end %>
 </div>
