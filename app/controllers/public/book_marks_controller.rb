@@ -1,5 +1,9 @@
 class Public::BookMarksController < ApplicationController
   before_action :authenticate_user!
+
+  def index
+  end
+  
   def create
     @user = current_user
     @works = Work.find(params[:work_id])

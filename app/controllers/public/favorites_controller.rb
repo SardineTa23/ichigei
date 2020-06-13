@@ -1,5 +1,11 @@
 class Public::FavoritesController < ApplicationController
   before_action :authenticate_user!
+
+  def index
+    @posts = []
+    current_user.favorites.each { |fav| @post << fav.post }
+  end
+
   def create
     @user = current_user
     @post = Post.find(params[:post_id])

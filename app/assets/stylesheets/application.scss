@@ -129,10 +129,16 @@ h2, h3 {
    font-weight: bold;
  }
 
- .left_form {
-   width: 35%;
+ .left-field  {
+   width: 30%;
    float: left;
  }
+
+ .right-field {
+  float: left;
+  width: 70%;
+ } 
+ 
 
  .links {
    margin-top: 20px;
@@ -140,15 +146,11 @@ h2, h3 {
 
  .links a {
    background-color: gainsboro;
+   display: inline-block;
    color: black;
    border-radius: 5px;
    padding: 2px;
    margin-bottom: 2px;
- }
-
- .user-profile{
-   float: left;
-   width: 65%;
  }
 
  .profile-content {
