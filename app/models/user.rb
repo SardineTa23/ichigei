@@ -15,6 +15,8 @@ class User < ApplicationRecord
   has_many :entries
   has_many :messages
   has_many :portfolios, dependent: :destroy
+  has_many :employer_evaluations
+  has_many :labor_evaluations
 
   enum status: { personal: 0, company: 1 }
 

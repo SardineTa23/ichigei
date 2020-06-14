@@ -43,7 +43,12 @@
 
   <% if current_user != post.user %>
     <div class="show-item">
-      <%= link_to 'スカウトする' %>
+    <h4>この投稿をしたユーザーを、あなたの求人にスカウト</h4>
+      <%= form_tag(entries_scout_path) do  %>
+        <%= collection_select(:works, :id, current_user.works, :id, :title, {prompt: '選択してください'}) %>
+        <%= hidden_field_tag :user_id, post.user.id, placeholder: '選択してください' %><br>
+        <%= submit_tag 'この求人にスカウトする' %>
+      <% end %>
     </div>
   <% end %>
   <div class="show-item"></div>
