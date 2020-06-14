@@ -1,49 +1,64 @@
-<h3><%= @work.title %></h3>
+<div class="clearfix">
+  <%= render "shared/left_field", post: @post %>
+  <div class="right-field">
+    <div class='right-field-title'>
+      <h3>求人詳細</h3>
+    </div>
+    
+    <div class="show-item">
+      <h4 class="show-item-title"><%= @work.title %></h4>
+    </div>
+    <div class="show-item">
+      <h4 class="show-item-label">勤務日時</h4>
+      <div class="show-item-content">
+        <p><%= @work.started_at.to_s(:datetime_jp) %> ~ <%= @work.ended_at.to_s(:datetime_jp) %></p>
+      </div>
+    </div>
+    <div class="show-item">
+      <h4 class="show-item-label">勤務内容</h4>
+      <div class="show-item-content">
+        <p><%= @work.condition %></p>
+      </div>
+    </div>
+    <div class="show-item">
+      <h4 class="show-item-label">付与ポイント</h4>
+      <div class="show-item-content">
+        <p><%= @work.reward.to_s %>P</p>
+      </div>
+    </div>
+    <div class="show-item">
+      <h4 class="show-item-label">応募条件・資格</h4>
+      <div class="show-item-content">
+        <p><%= @work.condition %></p>
+      </div>
+    </div>
+    <div class="show-item">
+      <h4 class="show-item-label">イメージ画像</h4>
+      <div class="show-item-content">
+        <p><%= attachment_image_tag(@work, :image, :fill, 500, 300, format: 'jpeg' ) %><br></p>
+      </div>
+    </div>
+    <div class="show-item">
+      <h4 class="show-item-label">求人作成日</h4>
+      <div class="show-item-content">
+        <p><%= @work.created_at.to_s(:datetime_jp) %></p>
+      </div>
+    </div>
 
-<div class="table">
-  <table>
-    <tr>
-      <%= @work.description %>
-    </tr><br>
-
-    <tr>
-      <%= @work.condition %>
-    </tr><br>
-
-    <tr>
-      <%= @work.reward.to_s %>
-    </tr><br>
-
-    <tr>
-      <%= @work.created_at.to_s(:datetime_jp) %>
-    </tr><br>
-
-    <tr>
-      <%= @work.started_at.to_s(:datetime_jp) %>
-    </tr><br>
-
-    <tr>
-      <%= @work.ended_at.to_s(:datetime_jp) %>
-    </tr><br>
-
-   
-
-  </table>
+    <div class="show-item clearfix">
+      <div class='entry-form'>
+        <% if @work.user == current_user %>
+          <%= button_to 'この求人の応募者一覧', self_work_entries_path(@work), method: :get %>
+          <%= link_to 'この求人を編集する', edit_work_path(@work)%>
+        <% else %>
+          <% if current_user.check_entry(@work) == nil %>
+            <%= button_to 'この求人に応募する', entries_path(work_id: @work), method: :post %>
+          <% else %>
+            <%= button_to '応募済みの求人です、メッセージへ', room_path(@entry.room), method: :get %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>
 
-<div class='entry-form'>
-  <% if @work.user == current_user %>
-    <%= button_to 'この求人の応募者一覧', self_work_entries_path(@work), method: :get %>
-  <% else %>
-    <% if current_user.check_entry(@work) == nil %>
-      <%= button_to 'この求人に応募する', entries_path(work_id: @work), method: :post %>
-    <% else %>
-      <%= button_to '応募済みの求人です、メッセージへ', room_path(@entry.room), method: :get %>
-    <% end %>
-  <% end %>
-</div>
-
-
-<% if @work.user == current_user %>
-  <%= link_to 'この求人を編集する', edit_work_path(@work)%>
-<% end %>

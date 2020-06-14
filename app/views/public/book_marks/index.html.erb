@@ -14,7 +14,7 @@
       <tbody> 
         <% @works.each do |work| %>
           <tr class="table-item">
-            <% if work.id %>
+            <% if work != nil %>
               <td>
                 <%= link_to(work.user) do %>
                   <%= attachment_image_tag(work.user, :profile_image, :fill, 50, 50, fallback: "no-image-icon.jpg") %>

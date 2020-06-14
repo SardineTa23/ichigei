@@ -3,6 +3,4 @@
   <%= render "shared/right_field", user: @user %>
 </div>
 
-<% if current_user.posts.count != 0 %>
-  <%= render "shared/post_index_field", user: @user, posts: @user.posts.page(params[:page]).per(15).order(created_at: :desc)%>
-<% end %>
+

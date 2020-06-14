@@ -15,7 +15,7 @@ Rails.application.routes.draw do
     resources :portfolios, only: [:new, :create, :edit, :destroy, :update]
     resources :users, only: [:show, :edit, :update, :destroy, :index]
     resources :messages, only: [:create]
-    resources :rooms, only: [:show]
+    resources :rooms, only: [:show, :index]
     resources :employer_evaluations, only: [:create]
     resources :labor_evaluations, only: [:create]
     resources :posts, only: [:show, :create, :destroy, :index] do

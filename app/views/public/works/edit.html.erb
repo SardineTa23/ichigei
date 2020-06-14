@@ -1,5 +1,6 @@
 <h2>募集の新規登録</h2>
 <%= form_for(@work) do |f|%>
+  <%= render 'layouts/errors', obj: @work %>
   <div class="field">
     <%= f.label '求人タイトル'%><br>
     <%= f.text_field :title %>
@@ -22,7 +23,10 @@
   </div>
   <div class="field">
     <%= f.label '画像をアップロード' %><br>
-    <p class="img-1">画像1：<%= f.attachment_field :image, multiple: true, direct: true, presigned: true %></p>
+    <p class="img-1">現在の画像<br>
+      <%= attachment_image_tag(@work, :image, :fill, 300, 300, format: 'jpeg' ) %><br>
+      <%= f.attachment_field :image, multiple: true, direct: true, presigned: true %>
+    </p>
   </div>
   <div class="field">
     <%= f.label :started_at, '勤務開始日時' %>

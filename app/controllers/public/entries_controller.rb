@@ -12,10 +12,13 @@ class Public::EntriesController < ApplicationController
     user = User.find(params[:user_id])
     work = Work.find(params[:works][:id])
     if user.check_entry(work) == nil
-      entry = work.entries.new(user_id: user.id)
+      entry = work.entries.new(user_id: user.id, points_when_applying: work.reward)
       if entry.save
         room = Room.create(entry_id: entry.id)
         redirect_to room_path(room)
+      else
+        @post = Post.find(params[:post_id])
+        render 'public/posts/show'
       end
     else
       entry = user.entries.find_by(work_id: work.id)

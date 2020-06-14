@@ -1,5 +1,12 @@
 <div class="right-field">
-  <h3>イチゲイ詳細</h3>
+  <div class='right-field-title'>
+    <h3>イチゲイ詳細</h3>
+  </div>
+
+  <div class="show-item">
+    <h4 class="show-item-title"><%= post.title %></h4>
+  </div>
+
   <div class="show-item">
     <h4 class="show-item-label">ユーザー</h4>
       <%= link_to(post.user) do %>
@@ -9,17 +16,18 @@
         </div>
       <% end %>
   </div>
-  <div class="show-item">
-    <h4 class="show-item-label"><%= post.title %></h4>
-  </div>
 
   <div class="show-item">
-    <h4>イチゲイのカテゴリー</h4>
-    <% if post.category %>
-      <p><%= post.category.name %></p>
-    <% else %>
-      <p>カテゴリー登録なし</p>
-    <% end %>
+    <div class="show-item-label">
+      <h4>イチゲイのカテゴリー</h4>
+    </div>
+    <div class="show-item-content">
+      <% if post.category %>
+        <p><%= post.category.name %></p>
+      <% else %>
+        <p>カテゴリー登録なし</p>
+      <% end %>
+    </div>
   </div>
 
   <div class="show-item">
@@ -31,28 +39,42 @@
 
   <div class="show-item">
     <h4 class="show-item-label">Content</h4>
-    <div>
+    <div class="show-item-content">
       <p><%= post.content %></p>
-      <div class="show-item-content">
-        <%= attachment_image_tag(post, :image, :fill, 100, 100, format: 'jpeg' ) %>
-      </div>
+    </div>
+  </div>
+
+  <div class="show-item">
+    <h4 class="show-item-label">画像</h4>
+    <div class="show-item-content">
+      <%= attachment_image_tag(post, :image, :fill, 100, 100, format: 'jpeg' ) %>
+    </div>
+  </div>
+
+  <div class="show-item">
+    <h4 class="show-item-label">URLリンク</h4>
+    <div class="show-item-content">
+      <%= post.url %>
     </div>
   </div>
 
   
-
   <% if current_user != post.user %>
     <div class="show-item">
-    <h4>この投稿をしたユーザーを、あなたの求人にスカウト</h4>
-      <%= form_tag(entries_scout_path) do  %>
-        <%= collection_select(:works, :id, current_user.works, :id, :title, {prompt: '選択してください'}) %>
-        <%= hidden_field_tag :user_id, post.user.id, placeholder: '選択してください' %><br>
-        <%= submit_tag 'この求人にスカウトする' %>
-      <% end %>
+      <div class="show-item-label">
+        <h4>この投稿をしたユーザーを、あなたの求人にスカウト</h4>
+      </div>
+      <div class="show-item-content">
+        <%= form_tag(entries_scout_path) do  %>
+          <p>以下からスカウトしたい求人を選択してください</p>
+          <%= collection_select(:works, :id, current_user.works, :id, :title) %>
+          <%= hidden_field_tag :user_id, post.user.id, placeholder: '選択してください' %><br>
+          <%= hidden_field_tag :post_id, post.id, placeholder: '選択してください' %><br>
+          <%= submit_tag 'この求人にスカウトする' %>
+        <% end %>
+      </div>
     </div>
   <% end %>
-  <div class="show-item"></div>
-  <div class="show-item"></div>
 
 </div>
 

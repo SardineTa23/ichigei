@@ -2,7 +2,7 @@ class Public::WorksController < ApplicationController
   before_action :authenticate_user!
   def index
     @q = Work.where(recruitment_status: 0).ransack(params[:q])
-    @works = @q.result(distinct: true).page(params[:page]).per(20).order(created_at: :desc)
+    @works = @q.result(distinct: true).page(params[:page]).per(15).order(created_at: :desc)
     @post = current_user.posts.new
   end
 
@@ -15,6 +15,7 @@ class Public::WorksController < ApplicationController
   end
 
   def show
+    @post = current_user.posts.new
     @work = Work.find(params[:id])
     @entry = Entry.find_by(work_id: @work.id, user_id: current_user.id)
   end

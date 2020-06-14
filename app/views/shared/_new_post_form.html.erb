@@ -23,7 +23,7 @@
         <%= f.collection_select :category, Category.all, :id, :name, {include_blank: '選択してください'} %>
       </div>
       <div class="">
-        <%= f.submit "新たなイチゲイを投稿する", method: :post, class: "btn btn-primary"  %>
+        <%= f.submit "新たなイチゲイを投稿", method: :post, class: "btn btn-primary"  %>
       </div>
     <% end %>
 </div>
