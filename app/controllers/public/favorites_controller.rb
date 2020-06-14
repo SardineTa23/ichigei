@@ -2,8 +2,9 @@ class Public::FavoritesController < ApplicationController
   before_action :authenticate_user!
 
   def index
+    @post = current_user.posts.new
     @posts = []
-    current_user.favorites.each { |fav| @post << fav.post }
+    current_user.favorites.each { |fav| @posts << fav.post }
   end
 
   def create

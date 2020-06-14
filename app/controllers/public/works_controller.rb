@@ -3,6 +3,7 @@ class Public::WorksController < ApplicationController
   def index
     @q = Work.where(recruitment_status: 0).ransack(params[:q])
     @works = @q.result(distinct: true).page(params[:page]).per(20).order(created_at: :desc)
+    @post = current_user.posts.new
   end
 
   def my_works

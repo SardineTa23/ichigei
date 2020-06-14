@@ -1,0 +1,42 @@
+<div class="clearfix">
+  <%= render "shared/left_field", post: @post %>
+  <div class="right-field">
+    <table class='table table-hover table-inverse'>
+      <thead>
+        <tr>
+          <th></th>
+          <th>Title</th>
+          <th>条件</th>
+          <th>カテゴリー</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody> 
+        <% @works.each do |work| %>
+          <tr class="table-item">
+            <% if work.id %>
+              <td>
+                <%= link_to(work.user) do %>
+                  <%= attachment_image_tag(work.user, :profile_image, :fill, 50, 50, fallback: "no-image-icon.jpg") %>
+                <% end %>
+              </td>      
+              <td><%= link_to work.title, work_path(work) %></td>
+              <td><%= work.condition %></td>
+              <% if work.category %>
+                <td><%= work.category.name %></td>
+              <% else %>
+                <td></td>
+              <% end %>
+              <td class=<%= "table__favorite--" + work.id.to_s %>>
+                <%= render 'public/book_marks/book_mark', work: work, user: current_user %>
+              </td>
+              <% if work.user == current_user %>
+                <td><%= link_to '削除する', work_path(work), method: :delete %></td>
+              <% end %>
+            <% end %>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

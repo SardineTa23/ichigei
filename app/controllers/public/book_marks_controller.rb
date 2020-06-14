@@ -2,6 +2,9 @@ class Public::BookMarksController < ApplicationController
   before_action :authenticate_user!
 
   def index
+    @post = current_user.posts.new
+    @works = []
+    current_user.book_marks.each { |book_mark| @works << book_mark.work }
   end
   
   def create

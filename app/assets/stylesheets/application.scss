@@ -54,6 +54,11 @@ header {
   border-radius: 10px;
 }
 
+a {
+  display: block;
+  color: gray;
+}
+
 .logo a {
   color: black;
   font-size: 50px;
@@ -79,6 +84,7 @@ header {
   background-color: rgb(228, 228, 253);
   display: inline-block;
   border-radius: 5px;
+  margin-bottom: 5px;
 }
 
 .nav-list li a {
@@ -230,11 +236,9 @@ h2, h3 {
    display: inline-block;
  }
 
- .user-show-link img, .user-show-link p {
-   
- }
 
  .message-content-r {
+   margin-right: 10px;
    word-break: break-all;
    width: 300px;
    border-radius: 10px;
@@ -242,4 +246,67 @@ h2, h3 {
    float: right;
    height: 80%;
    background-color: gainsboro;
+ }
+
+ .search-form {
+   margin: 0 auto;
+   width: 80%;
+ }
+
+ .post_search {
+   height: 100px;
+   width: 90%;
+   margin: 0 auto;
+ }
+
+
+ .post_search p, .post_search input {
+   font-size: 20px;
+   text-align: center;
+   margin: 0 5px;
+   display: inline-block;
+ }
+
+ .post_search input {
+   padding-left: 10px;
+   padding-right: 10px;
+ }
+
+ .work_search {
+   height: 100px;
+   width: 90%;
+   margin: 0 auto;
+ }
+
+
+ .work_search p, .work_search input {
+   font-size: 20px;
+   text-align: center;
+   margin: 0 5px;
+   display: inline-block;
+ }
+
+ .work_search input {
+   padding-left: 10px;
+   padding-right: 10px;
+ }
+
+ .table-item {
+   background-color:rgb(240, 240, 247) ;
+   margin-bottom: 5px;
+   border-radius: 10px;
+   height: 80px;
+ }
+
+ .pagination {
+  display: block;
+  width: 30%;
+  margin-left: 220px;
+ }
+ .pagination a, .pagination span {
+  font-weight: bold;
+  display: inline-block;
+  margin: 10px 5px;
+  font-size: 20px;
+  color: gray;
  }

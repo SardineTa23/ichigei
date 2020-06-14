@@ -10,7 +10,7 @@
   </thead>
   <tbody> 
     <% posts.each do |post| %>
-      <tr>
+      <tr class="table-item">
         <% if post.id %>
           <td>
             <%= link_to(post.user) do %>
@@ -35,5 +35,5 @@
     <% end %>
   </tbody>
 </table>
- <%= paginate posts %>
+<%= paginate posts %>
 

@@ -1,3 +1,7 @@
-<%= render "shared/search_form", obj: @posts.first %>
-
-<%= render "shared/post_index_field", posts: @posts %>
+<div class="clearfix">
+  <%= render "shared/search_form", obj: @posts.first %>
+  <%= render "shared/left_field", post: @post %>
+  <div class="right-field">
+    <%= render "shared/post_index_field", posts: @posts %>
+  </div>
+</div>
