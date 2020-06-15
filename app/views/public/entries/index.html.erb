@@ -1,7 +1,8 @@
 <div class="erries_index">
   <% @entries.each do |entry| %>
+    <% work = Work.with_deleted.find(entry.work_id) %>
     <table class='table'>
-      <tr><%= link_to entry.work.title, work_path(entry.work) %></tr>
+      <tr><%= link_to work.title, work_path(work) %></tr>
       <tr><%= link_to 'メッセージルームへ', room_path(entry.room) %></tr>
       <tr><p>応募日時</p><%= entry.created_at.to_s(:datetime_jp)%></tr>
     </table>

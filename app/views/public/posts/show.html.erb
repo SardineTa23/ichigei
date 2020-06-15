@@ -1,1 +1,4 @@
-<%= render 'shared/post_show', post: @post, user: @post.user %>
+<div class="clearfix">
+  <%= render "shared/left_field", post: @post %>
+  <%= render "shared/post_show", post: @post %>
+</div>

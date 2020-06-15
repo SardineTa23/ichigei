@@ -1,7 +1,9 @@
 class Public::PostsController < ApplicationController
+  
   def index
     @q = Post.ransack(params[:q])
-    @posts = @q.result(distinct: true).page(params[:page]).per(20).order(created_at: :desc)
+    @posts = @q.result(distinct: true).page(params[:page]).per(15).order(created_at: :desc)
+    @post = current_user.posts.new
   end
 
   def show 

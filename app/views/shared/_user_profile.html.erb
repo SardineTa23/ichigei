@@ -1,12 +1,52 @@
-<div>
-  <%= user.display_name %>
-</div>
-<div>
-  <%= user.introduction %>
-</div>
-
-<% if current_user.id == @user.id %>
-  <div>
-    <%= link_to 'マイページを編集する', edit_user_path(current_user), method: :get %>
+<div class='user-profile'>
+  <h3 class="user-show-title">プロフィール
+    <% if current_user == @user %>
+      <%= link_to '編集', edit_user_path(current_user), method: :get %>
+    <% end %>
+  </h3>
+  
+  <div class="profile-content">
+    <h4 class='profile-label'>ユーザーの形式</h4>
+    <div class='profile-item'><%= user.status_i18n %></div>
   </div>
-<% end %>
+
+  <div class="profile-content">
+    <h4 class='profile-label'>名前</h4>
+    <div class='profile-item user-show-name'>
+      <%= attachment_image_tag(@user, :profile_image, :fill, 60, 60, fallback: "no-image-icon.jpg") %><%= user.display_name %>
+    </div>
+    <div class='profile-item user-show-item'><P>総合評価</P><%= @total_evaluation_ave %><br><P>(<%= @labor_evaluations.count + @employer_evaluations.count%>件)</P></div>
+    <div class='profile-item user-show-item'><P>労働評価</P><%= @labor_evaluation_ave %><br><P>(<%= @labor_evaluations.count%>件)</P></div>
+    <div class='profile-item user-show-item'><P>雇い評価</P><%= @employer_evaluation_ave %><br><P>(<%= @employer_evaluations.count%>件)</P></div>
+  </div>
+
+  <div class="profile-content">
+    <h4 class='profile-label'>紹介文</h4>
+    <div class='profile-item'><%= user.introduction %></div>
+  </div>
+
+  <div class="profile-content">
+    <h4 class='profile-label'>ポートフォリオ
+      <% if @user == current_user %>
+         <%= link_to'追加', new_portfolio_path, class: 'portfolio-tsuika' %>
+      <% end %>
+    </h4>
+    <% @user.portfolios.each do |portfolio| %>
+      <div class="portfolio-content">
+        <p class='profile-item'>
+          <%= portfolio.title %>
+          <% if @user == current_user %>
+            <%= link_to'編集', edit_portfolio_path(portfolio), class: 'portfolio-tsuika'%>
+            <%= link_to'削除', portfolio_path(portfolio), method: :delete, class: 'portfolio-tsuika'%>
+          <% end %>
+        </p>
+        <p class='profile-item'>リンク：<%= link_to portfolio.link, portfolio.link %></p>
+        <p class='profile-item'><%= portfolio.description %></p>
+      </div>
+    <% end %>
+  </div>
+  <div class="profile-content">
+    <h4 class='profile-label'>ユーザーのリンク（twitter, github, Youtube等）</h4>
+    <div class='profile-item'><%= link_to user.url_link, user.url_link %></div>
+  </div>
+</div>

@@ -1,22 +1,74 @@
-<div class="message_list">
-  <% @room.messages.each do |msg| %>
-    <% if msg.user == @room.entries.first.user %>
-      <div class="applied_user_msg">
-        <%= attachment_image_tag(msg.user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg") %>
-        <p><%= msg.message %></p>
-      </div>
-    <% else %>
-      <div class="recruited_user_msg">
-        <%= attachment_image_tag(msg.user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg") %>
-        <p><%= msg.message %></p>
-      </div>
+<div class="clearfix">
+  <h2>メッセージ</h2>
+  <div class="msg-left">
+      <% if @work.deleted_at? %>
+        <h3><%= @work.title %>(削除済み)</h3>
+      <% else %>
+        <%= link_to work_path(@work) do %>
+          <h3><%= @work.title %></h3>
+        <% end %>
+      <% end %>
+    <div class="status_change">
+      <% entry = @room.entry %>
+      <% if current_user == @work.user && @room.entry.working_status_i18n != "処理済み" %>
+        <%= form_for(@room.entry, method: :patch)do |f| %>
+          <%= f.select :working_status, Entry.working_statuses_i18n.keys.map { |k| [Entry.working_statuses_i18n[k], k] } %>
+          <%= f.submit %>
+        <% end %>
+      <% elsif @room.entry.working_status_i18n == "処理済み" && current_user == entry.user && entry.employer_evaluation == nil %>
+        <p>1~5で評価してください</p>
+        <% 5.times do |n| %>
+          <% n+= 1 %>
+          <%= link_to n.to_s, employer_evaluations_path(num: n, entry_id: entry.id), method: :post %>
+        <% end %>
+      <% elsif @room.entry.working_status_i18n == "処理済み" && current_user == @work.user && entry.labor_evaluation == nil %> 
+        <p>1~5で評価してください</p>
+        <% 5.times do |n| %>
+          <% n+= 1 %>
+          <%= link_to n.to_s, labor_evaluations_path(num: n, entry_id: entry.id), method: :post %>
+        <% end %>
+      <% elsif @room.entry.working_status_i18n == "処理済み" %>
+        <p>処理済み</p>
+      <% end %>
+    </div>
+    <div class="message_field">
+      <% if @message %>
+        <%= render 'layouts/errors', obj: @message %>
+      <% end %>
+      <%= form_for(Message.new) do |f| %>
+        <%= f.text_area :message, :size=>"40x10" %>
+        <%= hidden_field_tag :room_id, @room.id %>
+        <%= f.submit 'メッセージを送信', class: 'btn' %>
+      <% end %>
+    </div>
+  </div>
+  <div class="message_lists">
+    <% @room.messages.each do |msg| %>
+      <% if msg.user == @room.entry.user %>
+        <div class="applied_user_msg msg-list clearfix">
+          <div class="user-show-link-r">
+            <%= link_to(msg.user) do %>
+                <%= attachment_image_tag(msg.user, :profile_image, :fill, 60, 60, format: 'jpeg' ) %>
+                <p><%= msg.user.display_name %></p>
+            <% end %>
+          </div>
+          <div class="message-content-r">
+            <p><%= msg.message %></p>
+          </div>
+        </div>
+      <% else %>
+        <div class="recruited_user_msg msg-list clearfix">
+          <div class="user-show-link">
+            <%= link_to(msg.user) do %>
+                <%= attachment_image_tag(msg.user, :profile_image, :fill, 60, 60, format: 'jpeg' ) %>
+                <p><%= msg.user.display_name %></p>
+            <% end %>
+          </div>
+          <div class="message-content">
+            <p><%= msg.message %></p>
+          </div>
+        </div>
+      <% end %>
     <% end %>
-  <% end %>
-</div>
-<div class="message_field">
-  <%= form_for(@room.messages.new) do |f| %>
-    <%= f.text_area :message %>
-    <%= hidden_field_tag :room_id, @room.id %>
-    <%= f.submit '送信' %>
-  <% end %>
+  </div>
 </div>

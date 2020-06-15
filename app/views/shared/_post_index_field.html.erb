@@ -3,22 +3,28 @@
     <tr>
       <th></th>
       <th>Title</th>
-      <th>Post URL</th>
+      <th>URLリンク</th>
       <th>カテゴリー</th>
       <th></th>
     </tr>
   </thead>
   <tbody> 
     <% posts.each do |post| %>
-      <tr>
+      <tr class="table-item">
         <% if post.id %>
           <td>
             <%= link_to(post.user) do %>
               <%= attachment_image_tag(post.user, :profile_image, :fill, 50, 50, fallback: "no-image-icon.jpg") %>
             <% end %>
           </td>      
-          <td><%= link_to post.title, post_path(post) %></td>
-          <td><%= link_to 'イチゲイのリンク', post.url %></td>
+          <td class="index-title-link">
+            <%= link_to(post_path(post)) do %>
+              <p>
+                <%= post.title %>
+              </p>
+            <% end %>
+          </td>
+          <td><%= link_to post.url, post.url %></td>
           <% if post.category %>
             <td><%= post.category.name %></td>
           <% else %>
@@ -35,5 +41,5 @@
     <% end %>
   </tbody>
 </table>
- <%= paginate posts %>
+<%= paginate posts %>
 

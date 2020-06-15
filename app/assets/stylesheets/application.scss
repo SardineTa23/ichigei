@@ -14,10 +14,421 @@
  *= require_self
  */
 
- @import "bootstrap"; 
+@import "bootstrap";
 
- * {
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
- }
+  text-decoration: none;
+  list-style: none;
+}
+
+.clearfix::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+header {
+  margin: 0 auto;
+  height: 100px;
+  position: relative;
+}
+
+.header-content {
+  width: 90%;
+  height: 100%;
+  margin: 0 auto;
+}
+
+.logo {
+  position: absolute;
+  width: 15%;
+  float: left;
+  font-weight: bold;
+  color: black;
+  top: 20px;
+  background-color: rgb(228, 228, 253);
+  text-align: center;
+  border-radius: 10px;
+}
+
+a {
+  display: block;
+  color: rgb(93, 93, 97);
+}
+
+.logo a {
+  color: black;
+  font-size: 50px;
+}
+
+.header-nav {
+  position: absolute;
+  top: 40px;
+  right: 5%;
+  float: left;
+  width: 75%;
+}
+
+.nav-list {
+  width: 95%;
+  margin-left: 5%;
+  overflow: hidden;
+}
+
+.nav-list li {
+  width: 200px;
+  text-align: center;
+  background-color: rgb(228, 228, 253);
+  display: inline-block;
+  border-radius: 5px;
+  margin-bottom: 5px;
+}
+
+.nav-list li a {
+  text-decoration: none;
+  font-weight: bold;
+  color: black;
+  font-size: 20px;
+}
+
+footer {
+  height: 100px;
+}
+
+main {
+  margin: 10px auto;
+  padding: 10px 0;
+  border-top: 5px solid #f3f1f3;
+  border-bottom: 5px solid #f3f1f3;
+}
+
+h2,
+h3 {
+  font-weight: bold;
+}
+
+.container {
+  width: 90%;
+  margin: 0 auto;
+  margin-bottom: 10px;
+}
+
+.profile_image {
+  border-radius: 50%;
+}
+
+.field {
+  margin-bottom: 10px;
+}
+
+.button {
+  background-color: ghostwhite;
+  display: inline-block;
+  font-weight: bold;
+}
+
+#user-prolile-image {
+  background-color: ghostwhite;
+  display: inline-block;
+  font-weight: bold;
+}
+
+.left-field {
+  width: 30%;
+  float: left;
+}
+
+.right-field {
+  float: left;
+  width: 70%;
+}
+
+.links {
+  margin-top: 20px;
+}
+
+.links a {
+  background-color: gainsboro;
+  display: inline-block;
+  color: black;
+  border-radius: 5px;
+  padding: 2px;
+  margin-bottom: 2px;
+}
+
+.index-title-link {
+  display: block;
+  height: 100%;
+}
+
+.user-show-title {
+  margin-bottom: 20px;
+}
+
+.user-show-title a {
+  font-size: 18px;
+  margin-left: 10px;
+  display: inline-block;
+}
+
+.user-profile {
+  margin-bottom: 50px;
+}
+
+.profile-content {
+  margin-bottom: 40px;
+}
+
+.profile-label {
+  border-bottom: 2px solid #c7c3c7;
+  display: block;
+  font-weight: bold;
+}
+
+.profile-label a {
+  font-size: 13px;
+}
+
+.profile-item {
+  display: inline-block;
+  width: 95%;
+  margin-left: 20px;
+  word-break: break-all;
+}
+
+.portfolio-item a {
+  display: inline;
+}
+
+.profile-item a {
+  display: inline;
+}
+
+.portfolio-tsuika {
+  display: inline-block;
+  margin-left: 50px;
+  font-weight: bold;
+  color: black;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.portfolio-content {
+  padding-bottom: 5px;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #c7c3c7;
+}
+
+.user-show-name {
+  display: inline-block;
+  width: 20%;
+}
+.user-show-item {
+  width: 20%;
+  display: inline-block;
+}
+
+.msg-left {
+  float: left;
+  width: 20%;
+}
+
+.message_field {
+  margin-top: 50px;
+}
+
+.message_lists {
+  width: 80%;
+  float: left;
+}
+
+.msg-list {
+  height: 100px;
+  width: 70%;
+  margin: 0 auto;
+}
+
+.user-show-link {
+  float: left;
+  height: 100%;
+  width: 100px;
+}
+
+.message-content {
+  word-break: break-all;
+  width: 300px;
+  border-radius: 10px;
+  padding: 10px;
+  float: left;
+  height: 80%;
+  background-color: gainsboro;
+}
+
+.user-show-link-r {
+  float: right;
+  height: 100%;
+  width: 100px;
+}
+
+.user-show-link-r img,
+.user-show-link-r p {
+  margin: 0 auto;
+  display: inline-block;
+}
+
+.message-content-r {
+  margin-right: 10px;
+  word-break: break-all;
+  width: 300px;
+  border-radius: 10px;
+  padding: 10px;
+  float: right;
+  height: 80%;
+  background-color: gainsboro;
+}
+
+.search-form {
+  margin: 0 auto;
+  width: 80%;
+}
+
+.post_search {
+  height: 100px;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.post_search p,
+.post_search input {
+  font-size: 20px;
+  text-align: center;
+  margin: 0 5px;
+  display: inline-block;
+}
+
+.post_search input {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.work_search {
+  height: 100px;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.work_search p,
+.work_search input {
+  font-size: 20px;
+  text-align: center;
+  margin: 0 5px;
+  display: inline-block;
+}
+
+.work_search input {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.table-item {
+  background-color: rgb(240, 240, 247);
+  margin-bottom: 5px;
+  border-radius: 10px;
+  height: 80px;
+}
+
+.pagination {
+  display: block;
+  width: 30%;
+  margin-left: 220px;
+}
+.pagination a,
+.pagination span {
+  font-weight: bold;
+  display: inline-block;
+  margin: 10px 5px;
+  font-size: 20px;
+  color: gray;
+}
+
+.right-field-title {
+
+}
+
+.show-item {
+  
+  margin-bottom: 40px;
+}
+
+.show-item-title {
+  margin-left: 30px;
+  font-size: 40px;
+}
+
+.show-item-label {
+  border-bottom: 2px solid #c7c3c7;
+ 
+  font-weight: bold;
+}
+
+.show-item-content {
+  margin-left: 30px;
+  word-break: break-all;
+}
+
+.entry-form {
+  float: right;
+  margin-right: 30%;
+}
+
+.room-list-item {
+  border-bottom: 2px solid #c7c3c7;
+  margin-top: 10px;
+}
+
+.room-list-item-left {
+  height: 100%;
+  width: 20%;
+  display: inline-block;
+}
+
+.room-list-item-left a {
+  width: 100%;
+  display: inline-block;
+  text-align: center;
+}
+
+.room-list-item-right {
+  width: 78%;
+  display: inline-block;
+}
+
+.room-content a {
+  display: inline-block;
+  width: 100%;
+  text-align: right;
+}
+
+.room-content p {
+  word-break: break-all;
+  margin-bottom: 0;
+}
+
+.room-date p {
+  text-align: right;
+}
+
+.room-last-message {
+  background-color: white;
+  display: block;
+  width: 90%;
+  margin: 0 auto 10px auto;
+  font-size: 16px;
+  background-color: rgb(240, 240, 247);
+  border-radius: 10px;
+  padding: 10px 30px;
+}
+

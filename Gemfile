@@ -81,3 +81,5 @@ gem "mailcatcher"
 gem "letter_opener"
 gem "kaminari"
 gem 'ransack'
+gem 'devise-i18n'
+gem 'devise-i18n-views'

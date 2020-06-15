@@ -8,8 +8,10 @@
   <% class_name = '仕事' %>
 <% end %>
 
-<%= search_form_for(@q, url: path) do |f| %>
-  <p><%= "名前で検索：" %><%= f.search_field :title_cont %></p>
-  <p><%= "カテゴリー"%><%= f.collection_select :category_id_eq, Category.all, :id, :name, :include_blank => '指定なし' %></p>
-  <%= f.submit %>
-<% end %>
+<div class='search-form'>
+  <%= search_form_for(@q, url: path) do |f| %>
+    <p><%= "名前で検索" %><br><%= f.search_field :title_cont, :size => "35" %></p>
+    <p><%= "カテゴリー"%><br><%= f.collection_select :category_id_eq, Category.all, :id, :name, :include_blank => '指定なし' %></p>
+    <%= f.submit %>
+  <% end %>
+</div>
