@@ -174,14 +174,12 @@ h3 {
   display: inline-block;
 }
 
-
-
 .user-profile {
   margin-bottom: 50px;
 }
 
 .profile-content {
-  margin-bottom: 30px;
+  margin-bottom: 40px;
 }
 
 .profile-label {
@@ -190,7 +188,7 @@ h3 {
   font-weight: bold;
 }
 
-.profile-label a{
+.profile-label a {
   font-size: 13px;
 }
 
@@ -357,27 +355,27 @@ h3 {
 }
 
 .right-field-title {
-  margin-left: 50px;
+
 }
 
 .show-item {
-  margin-left: 40px;
-  margin-bottom: 20px;
+  
+  margin-bottom: 40px;
 }
 
 .show-item-title {
-  margin-left: 20px;
+  margin-left: 30px;
   font-size: 40px;
 }
 
 .show-item-label {
-  border-bottom:  2px solid #c7c3c7;;
-  margin-left: 50px;
+  border-bottom: 2px solid #c7c3c7;
+ 
   font-weight: bold;
 }
 
 .show-item-content {
-  margin-left: 70px;
+  margin-left: 30px;
   word-break: break-all;
 }
 
@@ -385,3 +383,52 @@ h3 {
   float: right;
   margin-right: 30%;
 }
+
+.room-list-item {
+  border-bottom: 2px solid #c7c3c7;
+  margin-top: 10px;
+}
+
+.room-list-item-left {
+  height: 100%;
+  width: 20%;
+  display: inline-block;
+}
+
+.room-list-item-left a {
+  width: 100%;
+  display: inline-block;
+  text-align: center;
+}
+
+.room-list-item-right {
+  width: 78%;
+  display: inline-block;
+}
+
+.room-content a {
+  display: inline-block;
+  width: 100%;
+  text-align: right;
+}
+
+.room-content p {
+  word-break: break-all;
+  margin-bottom: 0;
+}
+
+.room-date p {
+  text-align: right;
+}
+
+.room-last-message {
+  background-color: white;
+  display: block;
+  width: 90%;
+  margin: 0 auto 10px auto;
+  font-size: 16px;
+  background-color: rgb(240, 240, 247);
+  border-radius: 10px;
+  padding: 10px 30px;
+}
+

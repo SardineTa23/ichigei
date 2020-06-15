@@ -1,0 +1,66 @@
+<div class="user_show clearfix">
+  <%= render "shared/left_field", post: @post %>
+  <div class="right-field">
+    <h3 class='right-field-title'>メッセージ</h3>
+    <div class="room-list">
+      <% if @rooms != [] %>
+        <% @rooms.each do |room| %>
+          <% work = Work.with_deleted.find(room.entry.work_id) %>
+          <div class="room-list-item claerfix">
+            <% if work.deleted_at? %>
+              <div class="room-list-item-left">
+                <% if current_user == work.user %>
+                  <%= link_to(user_path(room.entry.user)) do %>
+                    <%= attachment_image_tag(room.entry.user, :profile_image, :fill, 70, 70, fallback: "no-image-icon.jpg") %>
+                    <%= room.entry.user.display_name %>
+                  <% end %>
+                <% elsif current_user == room.entry.user %>
+                  <%= link_to(user_path(work.user)) do %>
+                    <%= attachment_image_tag(work.user, :profile_image, :fill, 70, 70, fallback: "no-image-icon.jpg") %>
+                    <p><%= work.user.display_name %></p>
+                  <% end %>
+                <% end %>
+              </div>
+              <div class="room-list-item-right">
+                <div class="room-content room-date">
+                  <p><%= room.messages.last.set_date %><br>状態：<%= room.entry.working_status_i18n %><br>削除済みの求人です</p>
+                </div>
+                <div class="room-content">
+                  <p class="room-last-message"><%= room.messages.last.message.truncate(240) %></p>
+                </div>
+                <div class="room-content">
+                  <%= link_to 'メッセージルームへ', room_path(room) %>
+                </div>
+              </div>
+            <% else %>
+              <div class="room-list-item-left">
+                <% if current_user == work.user %>
+                  <%= link_to(user_path(room.entry.user)) do %>
+                    <%= attachment_image_tag(room.entry.user, :profile_image, :fill, 70, 70, fallback: "no-image-icon.jpg") %>
+                    <%= room.entry.user.display_name %>
+                  <% end %>
+                <% elsif current_user == room.entry.user %>
+                  <%= link_to(user_path(work.user)) do %>
+                    <%= attachment_image_tag(work.user, :profile_image, :fill, 70, 70, fallback: "no-image-icon.jpg") %>
+                    <p><%= work.user.display_name %></p>
+                  <% end %>
+                <% end %>
+              </div>
+              <div class="room-list-item-right">
+                <div class="room-content room-date">
+                  <p><%= room.messages.last.set_date %><br>状態：<%= room.entry.working_status_i18n %></p>
+                </div>
+                <div class="room-content room-message-area">
+                  <p class="room-last-message"><%= room.messages.last.message.truncate(240) %></p>
+                </div>
+                <div class="room-content">
+                  <%= link_to 'メッセージルームへ', room_path(room) %>
+                </div>
+              </div>
+            <% end %> 
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>

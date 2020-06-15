@@ -9,6 +9,7 @@
           <th>Title</th>
           <th>条件</th>
           <th>カテゴリー</th>
+          <th>勤務地</th>
           <th></th>
         </tr>
       </thead>
@@ -22,7 +23,7 @@
                 <% end %>
               </td>      
               <td><%= link_to work.title, work_path(work) %></td>
-              <td><%= work.condition %></td>
+              <td><%= work.condition.truncate(30) %></td>
               <% if work.category %>
                 <td><%= work.category.name %></td>
               <% else %>
