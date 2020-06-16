@@ -27,8 +27,9 @@
               <% if work.category %>
                 <td><%= work.category.name %></td>
               <% else %>
-                <td></td>
+                <td>カテゴリーなし</td>
               <% end %>
+              <td><%= work.prefecture_name %></td>
               <td class=<%= "table__favorite--" + work.id.to_s %>>
                 <%= render 'public/book_marks/book_mark', work: work, user: current_user %>
               </td>

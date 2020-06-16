@@ -12,7 +12,7 @@
         </tr>
       </thead>
       <tbody> 
-        <% @works.each do |work| %>
+        <% @works.reverse_each do |work| %>
           <tr class="table-item">
             <% if work != nil %>
               <td>

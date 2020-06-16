@@ -13,4 +13,5 @@ class Public::RegistrationsController < Devise::RegistrationsController
     flash[:notice] = "successfully."
     user_path(user)
   end
+
 end

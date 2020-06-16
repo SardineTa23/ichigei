@@ -4,6 +4,16 @@
       <%= link_to '編集', edit_user_path(current_user), method: :get %>
     <% end %>
   </h3>
+
+  <div class="profile-content">
+    <h4 class='profile-label'>名前</h4>
+    <div class='profile-item user-show-name'>
+      <%= attachment_image_tag(@user, :profile_image, :fill, 60, 60, fallback: "no-image-icon.jpg") %><p><%= user.display_name %></p>
+    </div>
+    <div class='profile-item user-show-item'><P>総合評価</P><p><%= @total_evaluation_ave %></p><P>(<%= @labor_evaluations.count + @employer_evaluations.count%>件)</P></div>
+    <div class='profile-item user-show-item'><P>労働評価</P><p><%= @labor_evaluation_ave %></p><P>(<%= @labor_evaluations.count%>件)</P></div>
+    <div class='profile-item user-show-item'><P>雇い評価</P><p><%= @employer_evaluation_ave %></p><P>(<%= @employer_evaluations.count%>件)</P></div>
+  </div>
   
   <div class="profile-content">
     <h4 class='profile-label'>ユーザーの形式</h4>
@@ -11,13 +21,17 @@
   </div>
 
   <div class="profile-content">
-    <h4 class='profile-label'>名前</h4>
-    <div class='profile-item user-show-name'>
-      <%= attachment_image_tag(@user, :profile_image, :fill, 60, 60, fallback: "no-image-icon.jpg") %><%= user.display_name %>
-    </div>
-    <div class='profile-item user-show-item'><P>総合評価</P><%= @total_evaluation_ave %><br><P>(<%= @labor_evaluations.count + @employer_evaluations.count%>件)</P></div>
-    <div class='profile-item user-show-item'><P>労働評価</P><%= @labor_evaluation_ave %><br><P>(<%= @labor_evaluations.count%>件)</P></div>
-    <div class='profile-item user-show-item'><P>雇い評価</P><%= @employer_evaluation_ave %><br><P>(<%= @employer_evaluations.count%>件)</P></div>
+    <% if user.status_i18n == '個人' %>
+      <h4 class='profile-label'>居住地</h4>
+      <div class="profile-item">
+        <%= user.prefecture_name %>
+      </div>
+    <% else %>
+      <h4 class='profile-label'>所在地 </h4>
+      <div class="profile-item">
+        <%= user.prefecture_name %><%= user.address_city %><%= user.address_street %><%= user.address_bilding %>
+      </div>
+    <% end %>
   </div>
 
   <div class="profile-content">

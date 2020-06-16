@@ -1,15 +1,19 @@
 <div class="left-field">
   <div class="links">
     <h3>Menu</h3>
-    <%= link_to 'メッセージ', rooms_path %>
-    <%= link_to '募集した求人一覧', works_my_works_path %><br>
-    <%= link_to 'お気に入りしたイチゲイ', favorites_path %>
-    <%= link_to 'ブックマークした求人', book_marks_path	%><br>
-    <%= link_to '仕事を作る', new_work_path%>
+    <div class="left-field-item">
+      <%= link_to 'メッセージ', rooms_path %>
+      <%= link_to '募集した求人一覧', works_my_works_path %><br>
+      <%= link_to 'お気に入りしたイチゲイ', favorites_path %>
+      <%= link_to 'ブックマークした求人', book_marks_path	%><br>
+      <%= link_to '仕事を作る', new_work_path%>
+      </div>
   </div>
   <div class="links">
     <h3>所持ポイント</h3>
-    <%= current_user.point %>P
+    <div class="left-field-item">
+      <p class="point-show"><%= current_user.point %>P</p>
+    </div>
   </div>
   <%= render "shared/new_post_form", post: post %>
 </div>

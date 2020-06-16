@@ -1,5 +1,4 @@
 <div class="clearfix">
-  <h2>メッセージ</h2>
   <div class="msg-left">
       <% if @work.deleted_at? %>
         <h3><%= @work.title %>(削除済み)</h3>
@@ -43,6 +42,7 @@
     </div>
   </div>
   <div class="message_lists">
+  　<h2>メッセージ</h2>
     <% @room.messages.each do |msg| %>
       <% if msg.user == @room.entry.user %>
         <div class="applied_user_msg msg-list clearfix">
