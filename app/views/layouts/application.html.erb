@@ -20,7 +20,7 @@
             <ul class="nav-list clearfix">
               <li><%= link_to 'トップページへ', root_path %></li>
               <li><%= link_to 'マイページ', user_path(current_user) %></li>
-              <li><%= link_to 'みんなの投稿一覧', posts_path %></li>
+              <li><%= link_to 'みんなの投稿', posts_path %></li>
               <li><%= link_to '仕事を探す', works_path %></li>
               <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
             </ul>
@@ -45,6 +45,17 @@
       </div>
     </main>
     <footer>
+      <div class="footer-content clearfix">
+        <div class="footer-left">
+          <h2 class="footer-title">
+            <%= link_to 'Ichigei', root_path %>
+          </h2>
+        </div>
+        <div class="footer footer-right">
+          <p><%= link_to 'about', about_path %></p>
+          <p><%= link_to 'contact', contact_path %></p>
+        </div>
+      </div>
     </footer>
   </body>
 </html>

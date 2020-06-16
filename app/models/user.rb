@@ -20,6 +20,18 @@ class User < ApplicationRecord
 
   enum status: { personal: 0, company: 1 }
 
+  ##住所検索
+  include JpPrefecture
+  jp_prefecture :prefecture_code
+
+  def prefecture_name
+    JpPrefecture::Prefecture.find(code: prefecture_code).try(:name)
+  end
+
+  def prefecture_name=(prefecture_name)
+    self.prefecture_code = JpPrefecture::Prefecture.find(name: prefecture_name).code
+  end
+
   def check_entry(work)
     Entry.find_by(work_id: work.id, user_id: self.id)
   end

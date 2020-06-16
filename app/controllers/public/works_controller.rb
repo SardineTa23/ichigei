@@ -7,11 +7,18 @@ class Public::WorksController < ApplicationController
   end
 
   def my_works
+    @post = current_user.posts.new
     @works = current_user.works
   end
 
   def my_work_entries
+    @post = current_user.posts.new
     @work = Work.find(params[:id])
+    @entries = @work.entries
+    @rooms = []
+    @rooms = @entries.each do |entry| 
+      @rooms << entry.room
+    end 
   end
 
   def show

@@ -98,6 +98,24 @@ footer {
   height: 100px;
 }
 
+.footer-content {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.footer-left {
+  width: 15%;
+  float: left;
+}
+
+.footer-right {
+  float: left;
+}
+
+.footer-right {
+  line-height: 100%;
+}
+
 main {
   margin: 10px auto;
   padding: 10px 0;
@@ -144,6 +162,14 @@ h3 {
 .right-field {
   float: left;
   width: 70%;
+}
+
+.left-field-item {
+  margin-left: 20px;
+}
+
+.point-show {
+  font-size: 25px;
 }
 
 .links {
@@ -226,9 +252,14 @@ h3 {
   display: inline-block;
   width: 20%;
 }
+
 .user-show-item {
   width: 20%;
   display: inline-block;
+}
+
+.user-show-item p {
+  text-align: center;
 }
 
 .msg-left {
@@ -263,6 +294,8 @@ h3 {
   border-radius: 10px;
   padding: 10px;
   float: left;
+  min-height: 80%; 
+  height:auto !important; 
   height: 80%;
   background-color: gainsboro;
 }
@@ -286,6 +319,8 @@ h3 {
   border-radius: 10px;
   padding: 10px;
   float: right;
+  min-height: 80%; 
+  height:auto !important; 
   height: 80%;
   background-color: gainsboro;
 }
@@ -354,9 +389,6 @@ h3 {
   color: gray;
 }
 
-.right-field-title {
-
-}
 
 .show-item {
   
