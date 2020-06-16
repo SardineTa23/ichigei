@@ -1,0 +1,88 @@
+<h2>新規登録</h2>
+
+<div class="sign_up_form">
+  <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= f.error_notification %>
+
+    <div class="field">
+      <%= f.label 'メールアドレス' %><br>
+      <%= f.text_field :email, :size=>"60",
+                  required: true,
+                  autofocus: true,
+                  input_html: { autocomplete: "email" } %>
+    </div>
+
+    <div class="field">
+      <%= f.label 'パスワード' %><br>
+      <%= f.password_field :password, :size=>"60" ,
+                  required: true,
+                  hint: ("#{@minimum_password_length} パスワードが短すぎます" if @minimum_password_length),
+                  input_html: { autocomplete: "new-password" }%>
+    </div>
+
+    <div class="field">
+      <%= f.label 'パスワード確認用' %><br>
+      <%= f.password_field :password_confirmation, :size=>"60",
+                  required: true,
+                  input_html: { autocomplete: "new-password" } %>
+    </div>
+    
+    <div class="field">
+      <%= f.label '名前' %><br>
+      <%= f.text_field :name, :size=>"60" %>
+    </div>
+
+    <div class="field">
+      <%= f.label '個人または法人を選択してください' %><br>
+      <%= f.select :status, User.statuses_i18n.keys.map { |k| [User.statuses_i18n[k], k] } %>
+    </div>
+
+    <div class="field">
+      <%= f.label '表示名' %><br>
+      <%= f.text_field :display_name, :size=>"60" %>
+    </div>
+
+    <div class="field">
+      <%= f.label '電話番号' %><br>
+      <%= f.text_field :phone_number, :size=>"60" %>
+    </div>
+
+    <div class="field">
+      <%= f.label '郵便番号(先に入力すると、住所が自動入力されます)' %><br>
+      <%= f.text_field :postal_code, id: "user_postcode", value: nil %>
+    </div>
+
+    <div class="field">
+      <%= f.label '都道府県' %><br>
+      <%= f.collection_select :prefecture_code, JpPrefecture::Prefecture.all, :code, :name, id: 'user_prefecture_code' %>
+    </div>
+
+    <div class="field">
+      <%= f.label '市区町村' %><br>
+      <%= f.text_field :address_city, id: 'user_city' %>
+    </div>
+
+    <div class="field">
+      <%= f.label 'それ以下の住所' %><br>
+      <%= f.text_field :address_street, id: 'user_street' %>
+    </div>
+
+    <div class="field">
+      <%= f.label 'それ以下の住所（建物名・部屋番号）' %><br>
+      <%= f.text_field :address_building %>
+    </div>
+
+    <div class="field">
+      <%= f.label '誕生日' %><br>
+      <%= f.date_select(:birth_date, use_month_numbers: true, start_year: 1930, #入力値の開始位置（西暦）
+          end_year: (Time.now.year - 18), default: Date.new(1989, 1, 1))  %>
+    </div>
+
+    <div class="form-actions">
+      <%= f.button :submit, "Sign up" %>
+    </div>
+  <% end %>
+</div>
+
+
+

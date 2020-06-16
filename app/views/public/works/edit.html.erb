@@ -13,6 +13,32 @@
     <%= f.label '応募条件' %><br>
     <%= f.text_area :condition %>
   </div>
+
+   <div class="field">
+    <%= f.label '郵便番号(先に入力すると、住所が自動入力されます)' %><br>
+    <%= f.text_field :postal_code, id: "work_postcode" %>
+  </div>
+
+  <div class="field">
+    <%= f.label '都道府県' %><br>
+    <%= f.collection_select :prefecture_code, JpPrefecture::Prefecture.all, :code, :name, id: 'work_prefecture_code' %>
+  </div>
+
+  <div class="field">
+    <%= f.label '市区町村' %><br>
+    <%= f.text_field :address_city, id: 'work_city' %>
+  </div>
+
+  <div class="field">
+    <%= f.label 'それ以下の住所' %><br>
+    <%= f.text_field :address_street, id: 'work_street' %>
+  </div>
+
+  <div class="field">
+    <%= f.label 'それ以下の住所（建物名・部屋番号）' %><br>
+    <%= f.text_field :address_building %>
+  </div>
+  
   <div class="field">
     <%= f.label 'カテゴリーを選択' %>
     <%= f.collection_select :category, Category.all, :id, :name, {include_blank: '選択してください'} %>
