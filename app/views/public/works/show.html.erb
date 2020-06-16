@@ -52,9 +52,9 @@
           <%= link_to 'この求人を編集する', edit_work_path(@work)%>
         <% else %>
           <% if current_user.check_entry(@work) == nil %>
-            <%= button_to 'この求人に応募する', entries_path(work_id: @work), method: :post %>
+            <%= link_to 'この求人に応募する', entries_path(work_id: @work), method: :post %>
           <% else %>
-            <%= button_to '応募済みの求人です、メッセージへ', room_path(@entry.room), method: :get %>
+            <%= link_to '応募済みの求人です、メッセージへ', room_path(@entry.room), method: :get %>
           <% end %>
         <% end %>
       </div>

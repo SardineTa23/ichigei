@@ -39,10 +39,21 @@ class Public::EntriesController < ApplicationController
     entry = Entry.find(params[:id])
     if current_user == entry.work.user
       entry.working_status = params[:entry][:working_status]
-      entry.save
-      entry.user.update(point: entry.user.point + entry.points_when_applying)
-      entry.work.user.update(point: entry.work.user.point - entry.points_when_applying)
-      redirect_to room_path(entry.room)
+      if params[:entry][:working_status] == 'confirmed'  ##ステータスを確定に更新するとき
+        if entry.points_when_applying > current_user.point
+          @room = entry.room
+          @work = entry.work
+          render 'public/rooms/show'
+        else
+          entry.save
+          redirect_to room_path(entry.room)
+        end
+      elsif params[:entry][:working_status] == 'completed'  ##ステータスを処理済みに更新するとき
+        entry.save
+        entry.user.update(point: entry.user.point + entry.points_when_applying)
+        entry.work.user.update(point: entry.work.user.point - entry.points_when_applying)
+        redirect_to room_path(entry.room)
+      end
     end
   end
 end

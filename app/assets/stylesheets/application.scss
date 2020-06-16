@@ -415,9 +415,12 @@ h3 {
   word-break: break-all;
 }
 
-.entry-form {
-  float: right;
-  margin-right: 30%;
+.entry-form a {
+  display: inline-block;
+  text-align: center;
+  width: 100%;
+  font-size: 30px;
+  background-color: lightness($color: #000000);
 }
 
 .room-list-item {
