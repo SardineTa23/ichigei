@@ -1,1 +1,3 @@
 $(".table__book_mark--<%= @work.id.to_s %>").html("<%= j(render partial: 'public/book_marks/book_mark',  locals: {work: @work, user: current_user}) %>");
+$(".table-item<%= @work.id.to_s %>").remove();
+

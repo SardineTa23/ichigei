@@ -24,6 +24,8 @@
       </td>
       <% if post.user == current_user %>
         <td><%= link_to '削除する', post_path(post), method: :delete, remote: true, data: { confirm: '本当に消しますか？' } %></td>
+      <% else %>
+        <td></td>
       <% end %>
     <% end %>
   </tr>
