@@ -17,7 +17,11 @@
     <div class="show-item">
       <h4 class="show-item-label">カテゴリー</h4>
       <div class="show-item-content">
-        <p><%= @work.category.name %></p>
+        <% if @work.category %>
+          <p><%= @work.category.name %></p>
+        <% else %>
+          <p>カテゴリーなし</p>
+        <% end %>
       </div>
     </div>
     <div class="show-item">
@@ -61,19 +65,8 @@
       </div>
     </div>
 
-    <div class="show-item clearfix">
-      <div class='entry-form'>
-        <% if @work.user == current_user %>
-          <%= button_to 'この求人の応募者一覧', self_work_entries_path(@work), method: :get %>
-          <%= link_to 'この求人を編集する', edit_work_path(@work)%>
-        <% else %>
-          <% if current_user.check_entry(@work) == nil %>
-            <%= link_to 'この求人に応募する', entries_path(work_id: @work), method: :post %>
-          <% else %>
-            <%= link_to '応募済みの求人です、メッセージへ', room_path(@entry.room), method: :get %>
-          <% end %>
-        <% end %>
-      </div>
+    <div class="show-item clearfix work_entry">
+      <%= render 'shared/work_entry_form', work: @work, entry: @entry %>
     </div>
   </div>
 </div>

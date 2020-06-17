@@ -1,0 +1,12 @@
+<div class='entry-form'>
+  <% if work.user == current_user %>
+    <%= link_to 'この求人の応募者一覧', self_work_entries_path(work), method: :get %>
+    <%= link_to 'この求人を編集する', edit_work_path(work)%>
+  <% else %>
+    <% if current_user.check_entry(work) == nil %>
+      <%= link_to 'この求人に応募する', entries_path(work_id: work), method: :post, remote: true, data: { confirm: 'この求人に応募しますか？' } %>
+    <% else %>
+      <%= link_to "応募済みの求人です\r\nメッセージへ", room_path(entry.room), method: :get %>
+    <% end %>
+  <% end %>
+</div>
