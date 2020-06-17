@@ -4,11 +4,7 @@ class Public::MessagesController < ApplicationController
     @room = Room.find(params[:room_id])
     @message = current_user.messages.new(message_params)
     @message.room_id = @room.id
-    if @message.save
-      redirect_to room_path(@room)
-    else
-      render 'public/rooms/show'
-    end
+    @message.save
   end
 
   private

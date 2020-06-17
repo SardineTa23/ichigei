@@ -10,6 +10,7 @@
           <th>条件</th>
           <th>カテゴリー</th>
           <th>勤務地</th>
+          <th>ブックマーク</th>
           <th></th>
         </tr>
       </thead>
@@ -23,18 +24,20 @@
                 <% end %>
               </td>      
               <td><%= link_to work.title, work_path(work) %></td>
-              <td><%= work.condition.truncate(30) %></td>
+              <td><%= work.condition.truncate(20) %></td>
               <% if work.category %>
                 <td><%= work.category.name %></td>
               <% else %>
                 <td>カテゴリーなし</td>
               <% end %>
               <td><%= work.prefecture_name %></td>
-              <td class=<%= "table__favorite--" + work.id.to_s %>>
+              <td class=<%= "table__book_mark--" + work.id.to_s %>>
                 <%= render 'public/book_marks/book_mark', work: work, user: current_user %>
               </td>
               <% if work.user == current_user %>
                 <td><%= link_to '削除する', work_path(work), method: :delete %></td>
+              <% else %>
+                <td></td>
               <% end %>
             <% end %>
           </tr>

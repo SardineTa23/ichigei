@@ -1,0 +1,32 @@
+<% posts.each do |post| %>
+  <tr class="table-item <%= 'table__item--' + post.id.to_s %>">
+    <% if post.id %>
+      <td>
+        <%= link_to(post.user) do %>
+          <%= attachment_image_tag(post.user, :profile_image, :fill, 50, 50, fallback: "no-image-icon.jpg") %>
+        <% end %>
+      </td>      
+      <td class="index-title-link">
+        <%= link_to(post_path(post)) do %>
+          <p>
+            <%= post.title %>
+          </p>
+        <% end %>
+      </td>
+      <td><%= link_to post.url, post.url %></td>
+      <% if post.category %>
+        <td><%= post.category.name %></td>
+      <% else %>
+        <td></td>
+      <% end %>
+      <td class=<%= "table__favorite--" + post.id.to_s %>>
+        <%= render 'public/favorites/favorites', post: post, user: current_user %>
+      </td>
+      <% if post.user == current_user %>
+        <td><%= link_to '削除する', post_path(post), method: :delete, remote: true, data: { confirm: '本当に消しますか？' } %></td>
+      <% else %>
+        <td></td>
+      <% end %>
+    <% end %>
+  </tr>
+<% end %>

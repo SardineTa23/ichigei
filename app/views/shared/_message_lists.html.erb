@@ -1,0 +1,28 @@
+<h2>メッセージ</h2>
+<% @room.messages.each do |msg| %>
+  <% if msg.user == @room.entry.user %>
+    <div class="applied_user_msg msg-list clearfix">
+      <div class="user-show-link-r">
+        <%= link_to(msg.user) do %>
+            <%= attachment_image_tag(msg.user, :profile_image, :fill, 60, 60, format: 'jpeg' ) %>
+            <p><%= msg.user.display_name %></p>
+        <% end %>
+      </div>
+      <div class="message-content-r">
+        <p><%= msg.message %></p>
+      </div>
+    </div>
+  <% else %>
+    <div class="recruited_user_msg msg-list clearfix">
+      <div class="user-show-link">
+        <%= link_to(msg.user) do %>
+            <%= attachment_image_tag(msg.user, :profile_image, :fill, 60, 60, format: 'jpeg' ) %>
+            <p><%= msg.user.display_name %></p>
+        <% end %>
+      </div>
+      <div class="message-content">
+        <p><%= msg.message %></p>
+      </div>
+    </div>
+  <% end %>
+<% end %>

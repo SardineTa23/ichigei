@@ -1,4 +1,4 @@
-<div class="clearfix">
+<div class="room-page clearfix">
   <div class="msg-left">
       <% if @work.deleted_at? %>
         <h3><%= @work.title %>(削除済み)</h3>
@@ -34,41 +34,14 @@
       <% if @message %>
         <%= render 'layouts/errors', obj: @message %>
       <% end %>
-      <%= form_for(Message.new) do |f| %>
-        <%= f.text_area :message, :size=>"40x10" %>
+      <%= form_for(Message.new, remote: true) do |f| %>
+        <%= f.text_area :message, :size=>"40x10", id: 'text-area' %>
         <%= hidden_field_tag :room_id, @room.id %>
-        <%= f.submit 'メッセージを送信', class: 'btn' %>
+        <%= f.submit 'メッセージを送信', class: 'btn', remote: true, method: :post %>
       <% end %>
     </div>
   </div>
   <div class="message_lists">
-  　<h2>メッセージ</h2>
-    <% @room.messages.each do |msg| %>
-      <% if msg.user == @room.entry.user %>
-        <div class="applied_user_msg msg-list clearfix">
-          <div class="user-show-link-r">
-            <%= link_to(msg.user) do %>
-                <%= attachment_image_tag(msg.user, :profile_image, :fill, 60, 60, format: 'jpeg' ) %>
-                <p><%= msg.user.display_name %></p>
-            <% end %>
-          </div>
-          <div class="message-content-r">
-            <p><%= msg.message %></p>
-          </div>
-        </div>
-      <% else %>
-        <div class="recruited_user_msg msg-list clearfix">
-          <div class="user-show-link">
-            <%= link_to(msg.user) do %>
-                <%= attachment_image_tag(msg.user, :profile_image, :fill, 60, 60, format: 'jpeg' ) %>
-                <p><%= msg.user.display_name %></p>
-            <% end %>
-          </div>
-          <div class="message-content">
-            <p><%= msg.message %></p>
-          </div>
-        </div>
-      <% end %>
-    <% end %>
+    <%= render 'shared/message_lists', room: @room, entry: @entry %>
   </div>
 </div>

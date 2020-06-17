@@ -1,0 +1,2 @@
+$('#text-area').val('')
+$('.message_lists').html("<%= j(render partial: 'shared/message_lists', locals: { entry: @entry, room: @room }) %>");

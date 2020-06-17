@@ -27,22 +27,22 @@ class Public::EntriesController < ApplicationController
   end
 
   def create
-    work = Work.find(params[:work_id])
-    if  current_user.check_entry(work) == nil
-      @entry = current_user.entries.create(work_id: work.id, points_when_applying: work.reward)
+    @work = Work.find(params[:work_id])
+    if  current_user.check_entry(@work) == nil
+      @entry = current_user.entries.create(work_id: @work.id, points_when_applying: @work.reward)
       Room.create(entry_id: @entry.id)
-      redirect_to work_path(work)
     end
   end
 
   def update
     entry = Entry.find(params[:id])
-    if current_user == entry.work.user
+    work = Work.with_deleted.find(entry.work_id)
+    if current_user == work.user
       entry.working_status = params[:entry][:working_status]
       if params[:entry][:working_status] == 'confirmed'  ##ステータスを確定に更新するとき
         if entry.points_when_applying > current_user.point
           @room = entry.room
-          @work = entry.work
+          @work = work
           render 'public/rooms/show'
         else
           entry.save
@@ -51,7 +51,7 @@ class Public::EntriesController < ApplicationController
       elsif params[:entry][:working_status] == 'completed'  ##ステータスを処理済みに更新するとき
         entry.save
         entry.user.update(point: entry.user.point + entry.points_when_applying)
-        entry.work.user.update(point: entry.work.user.point - entry.points_when_applying)
+        work.user.update(point: work.user.point - entry.points_when_applying)
         redirect_to room_path(entry.room)
       end
     end
