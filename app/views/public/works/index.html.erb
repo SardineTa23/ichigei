@@ -30,7 +30,7 @@
                 <td>カテゴリーなし</td>
               <% end %>
               <td><%= work.prefecture_name %></td>
-              <td class=<%= "table__favorite--" + work.id.to_s %>>
+              <td class=<%= "table__book_mark--" + work.id.to_s %>>
                 <%= render 'public/book_marks/book_mark', work: work, user: current_user %>
               </td>
               <% if work.user == current_user %>
