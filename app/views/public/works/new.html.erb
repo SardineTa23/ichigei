@@ -2,40 +2,40 @@
 <%= form_for(@work) do |f|%>
   <div class="field">
     <%= f.label '求人タイトル'%><br>
-    <%= f.text_field :title %>
+    <%= f.text_field :title, :size=>"60" %>
   </div>
   <div class="field">
     <%= f.label '求人内容説明'%><br>
-    <%= f.text_area :description %>
+    <%= f.text_area :description, :size=>"60x10" %>
   </div>
   <div class="field">
     <%= f.label '応募条件' %><br>
-    <%= f.text_area :condition %>
+    <%= f.text_area :condition, :size=>"60x10" %>
   </div>
   
   <div class="field">
     <%= f.label '郵便番号(先に入力すると、住所が自動入力されます)' %><br>
-    <%= f.text_field :postal_code, id: "work_postcode" %>
+    <%= f.text_field :postal_code, id: "work_postcode", :size=>"60" %>
   </div>
 
   <div class="field">
     <%= f.label '都道府県' %><br>
-    <%= f.collection_select :prefecture_code, JpPrefecture::Prefecture.all, :code, :name, id: 'work_prefecture_code' %>
+    <%= f.collection_select :prefecture_code, JpPrefecture::Prefecture.all, :code, :name, id: 'work_prefecture_code', :size=>"60" %>
   </div>
 
   <div class="field">
     <%= f.label '市区町村' %><br>
-    <%= f.text_field :address_city, id: 'work_city' %>
+    <%= f.text_field :address_city, id: 'work_city', :size=>"60" %>
   </div>
 
   <div class="field">
     <%= f.label 'それ以下の住所' %><br>
-    <%= f.text_field :address_street, id: 'work_street' %>
+    <%= f.text_field :address_street, id: 'work_street', :size=>"60" %>
   </div>
 
   <div class="field">
     <%= f.label 'それ以下の住所（建物名・部屋番号）' %><br>
-    <%= f.text_field :address_building %>
+    <%= f.text_field :address_building, :size=>"60" %>
   </div>
   <div class="field">
     <%= f.label 'カテゴリーを選択' %>
@@ -43,11 +43,11 @@
   </div>
   <div class="field">
     <%= f.label '配布ポイント' %><br>
-    <%= f.number_field :reward %>
+    <%= f.number_field :reward, :size=>"60" %>
   </div>
   <div class="field">
     <%= f.label '画像をアップロード' %>
-    <p class="img-1">画像1：<%= f.attachment_field :image %></p>
+    <p class="img-1"><%= f.attachment_field :image %></p>
   </div>
   <div class="field">
     <%= f.label :started_at, '勤務開始日時' %>

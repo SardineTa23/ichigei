@@ -16,9 +16,13 @@ class Public::WorksController < ApplicationController
     @work = Work.find(params[:id])
     @entries = @work.entries
     @rooms = []
-    @rooms = @entries.each do |entry| 
-      @rooms << entry.room
-    end 
+    if @work.entries != []
+      @entries.each do |entry| 
+        @rooms << entry.room
+      end 
+    else
+      redirect_to work_path(@work)
+    end
   end
 
   def show
@@ -62,6 +66,6 @@ class Public::WorksController < ApplicationController
   private
     def work_params
       params.require(:work).permit(:title, :description, :condition,:started_at, :ended_at, :reward, :recruitment_status, :image,
-                                   :postal_code, :prefecture_code, :prefecture_name, :address_city, :address_street, :address_building)                          
+                                   :postal_code, :prefecture_code, :prefecture_name, :address_city, :address_street, :address_building, :category_id)                          
     end
 end

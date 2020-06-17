@@ -11,26 +11,43 @@
               <% if current_user == work.user %>
                 <%= link_to(user_path(room.entry.user)) do %>
                   <%= attachment_image_tag(room.entry.user, :profile_image, :fill, 70, 70, fallback: "no-image-icon.jpg") %>
-                  <%= room.entry.user.display_name %>
+                  <br><%= room.entry.user.display_name %>
                 <% end %>
+                <div class='room-list-work-title'>
+                  <p><%= work.title.truncate(20) %></p>
+                </div>
               <% elsif current_user == room.entry.user %>
                 <%= link_to(user_path(work.user)) do %>
                   <%= attachment_image_tag(work.user, :profile_image, :fill, 70, 70, fallback: "no-image-icon.jpg") %>
                   <p><%= work.user.display_name %></p>
                 <% end %>
+                <div class='room-list-work-title'>
+                  <p><%= work.title.truncate(20) %></p>
+                </div>
               <% end %>
             </div>
-            <div class="room-list-item-right">
-              <div class="room-content room-date">
-                <p><%= room.messages.last.set_date %><br>状態：<%= room.entry.working_status_i18n %></p>
+            <% if room.messages.last %>
+              <div class="room-list-item-right">
+                  <div class="room-content room-date">
+                    <p><%= room.messages.last.set_date %><br>状態：<%= room.entry.working_status_i18n %></p>
+                  </div>
+                  <div class="room-content room-message-area">
+                    <p class="room-last-message"><%= room.messages.last.message.truncate(240) %></p>
+                  </div>
+                  <div class="room-content">
+                    <%= link_to 'メッセージルームへ', room_path(room) %>
+                  </div>
               </div>
-              <div class="room-content room-message-area">
-                <p class="room-last-message"><%= room.messages.last.message.truncate(240) %></p>
+            <% else %>
+              <div class="room-list-item-right">
+                <div class="room-content room-message-area">
+                  <p class="room-last-message">まだメッセージを送信していません。<br>送信してみましょう！</p>
+                </div>
+                <div class="room-content">
+                  <%= link_to 'メッセージルームへ', room_path(room) %>
+                </div>
               </div>
-              <div class="room-content">
-                <%= link_to 'メッセージルームへ', room_path(room) %>
-              </div>
-            </div>
+            <% end %>
           </div>
         <% end %>
       <% end %>

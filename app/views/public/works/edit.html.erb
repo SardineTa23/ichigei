@@ -3,20 +3,20 @@
   <%= render 'layouts/errors', obj: @work %>
   <div class="field">
     <%= f.label '求人タイトル'%><br>
-    <%= f.text_field :title %>
+    <%= f.text_field :title, :size=>"60" %>
   </div>
   <div class="field">
     <%= f.label '求人内容説明'%><br>
-    <%= f.text_area :description %>
+    <%= f.text_area :description, :size=>"60" %>
   </div>
   <div class="field">
     <%= f.label '応募条件' %><br>
-    <%= f.text_area :condition %>
+    <%= f.text_area :condition, :size=>"60x10" %>
   </div>
 
    <div class="field">
     <%= f.label '郵便番号(先に入力すると、住所が自動入力されます)' %><br>
-    <%= f.text_field :postal_code, id: "work_postcode" %>
+    <%= f.text_field :postal_code, id: "work_postcode", :size=>"60x10" %>
   </div>
 
   <div class="field">
@@ -26,26 +26,26 @@
 
   <div class="field">
     <%= f.label '市区町村' %><br>
-    <%= f.text_field :address_city, id: 'work_city' %>
+    <%= f.text_field :address_city, id: 'work_city', :size=>"60" %>
   </div>
 
   <div class="field">
     <%= f.label 'それ以下の住所' %><br>
-    <%= f.text_field :address_street, id: 'work_street' %>
+    <%= f.text_field :address_street, id: 'work_street', :size=>"60" %>
   </div>
 
   <div class="field">
     <%= f.label 'それ以下の住所（建物名・部屋番号）' %><br>
-    <%= f.text_field :address_building %>
+    <%= f.text_field :address_building , :size=>"60"%>
   </div>
   
   <div class="field">
     <%= f.label 'カテゴリーを選択' %>
-    <%= f.collection_select :category, Category.all, :id, :name, {include_blank: '選択してください'} %>
+    <%= f.collection_select :category_id, Category.all, :id, :name, {include_blank: '選択してください'} %>
   </div>
   <div class="field">
     <%= f.label '配布ポイント' %><br>
-    <%= f.number_field :reward %>
+    <%= f.number_field :reward, :size=>"60" %>
   </div>
   <div class="field">
     <%= f.label '画像をアップロード' %><br>

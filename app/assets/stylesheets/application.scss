@@ -168,6 +168,10 @@ h3 {
   width: 70%;
 }
 
+.right-field-title {
+  margin-bottom: 20px;
+}
+
 .left-field-item {
   margin-left: 20px;
 }
@@ -298,8 +302,8 @@ h3 {
   border-radius: 10px;
   padding: 10px;
   float: left;
-  min-height: 80%; 
-  height:auto !important; 
+  min-height: 80%;
+  height: auto !important;
   height: 80%;
   background-color: gainsboro;
 }
@@ -323,8 +327,8 @@ h3 {
   border-radius: 10px;
   padding: 10px;
   float: right;
-  min-height: 80%; 
-  height:auto !important; 
+  min-height: 80%;
+  height: auto !important;
   height: 80%;
   background-color: gainsboro;
 }
@@ -393,9 +397,7 @@ h3 {
   color: gray;
 }
 
-
 .show-item {
-  
   margin-bottom: 40px;
 }
 
@@ -406,7 +408,7 @@ h3 {
 
 .show-item-label {
   border-bottom: 2px solid #c7c3c7;
- 
+
   font-weight: bold;
 }
 
@@ -426,6 +428,7 @@ h3 {
 .room-list-item {
   border-bottom: 2px solid #c7c3c7;
   margin-top: 10px;
+  margin-bottom: 20px;
 }
 
 .room-list-item-left {
@@ -469,5 +472,12 @@ h3 {
   background-color: rgb(240, 240, 247);
   border-radius: 10px;
   padding: 10px 30px;
+}
+
+.room-list-work-title {
+  margin-top: 5px;
+  padding-top: 2px;
+  border-top: 1px solid black;
+  text-align: center;
 }
 
