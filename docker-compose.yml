@@ -13,6 +13,9 @@ services:
     # ローカルのsrcをコンテナにマウント
     volumes:
       - .:/mimes
+    environment:
+      # この環境変数を追加
+      - "SELENIUM_DRIVER_URL=http://selenium_chrome:4444/wd/hub"
     # コンテナの外部に3000番を公開
     # 公開するポート番号：コンテナ内部の転送先ポート番号
     ports:
@@ -20,9 +23,18 @@ services:
     # dbコンテナが先に起動するよう設定
     depends_on:
       - db
+      - chrome
     # pryを使用してデバッグができるよう設定
     tty: true
     stdin_open: true
+  chrome:
+    image: selenium/standalone-chrome:latest
+    ports:
+      - 4444:4444
+  selenium_chrome:
+    image: selenium/standalone-chrome-debug
+    logging:
+      driver: none
   # MySQLコンテナ定義
   db:
     # mysqlを使用してコンテナ作成
