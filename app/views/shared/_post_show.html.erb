@@ -64,15 +64,22 @@
       <div class="show-item-label">
         <h4>この投稿をしたユーザーを、あなたの求人にスカウト</h4>
       </div>
-      <div class="show-item-content">
-        <%= form_tag(entries_scout_path) do  %>
-          <p>以下からスカウトしたい求人を選択してください</p>
-          <%= collection_select(:works, :id, current_user.works, :id, :title) %>
-          <%= hidden_field_tag :user_id, post.user.id, placeholder: '選択してください' %><br>
-          <%= hidden_field_tag :post_id, post.id, placeholder: '選択してください' %><br>
-          <%= submit_tag 'この求人にスカウトする' %>
-        <% end %>
-      </div>
+      <% if current_user.works != [] %>
+        <div class="show-item-content">
+          <%= form_tag(entries_scout_path) do  %>
+            <p>以下からスカウトしたい求人を選択してください</p>
+            <%= collection_select(:works, :id, current_user.works, :id, :title) %>
+            <%= hidden_field_tag :user_id, post.user.id, placeholder: '選択してください' %><br>
+            <%= hidden_field_tag :post_id, post.id, placeholder: '選択してください' %><br>
+            <%= submit_tag 'この求人にスカウトする' %>
+          <% end %>
+        </div>
+      <% else %>
+        <div class="show-item-content">
+          登録されている求人情報がありません。<br>
+          <%= link_to '仕事を追加する', new_work_path, class: 'btn btn-primary'%>
+        </div>
+      <% end %>
     </div>
   <% end %>
 

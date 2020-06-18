@@ -7,13 +7,13 @@
                     required: false,
                     autofocus: true,
                     input_html: { autocomplete: "email" },
-                    :size=>"60"%>
+                    :size=>"40"%>
         </div>
         <div class="field">
           <%= f.password_field :password,
                     required: false,
                     input_html: { autocomplete: "current-password" },
-                    :size=>"60" %>
+                    :size=>"40" %>
         </div>
         <div class="field">
           <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>

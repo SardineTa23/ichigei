@@ -7,6 +7,8 @@ class User < ApplicationRecord
   attachment :profile_image
   acts_as_paranoid
   validates :introduction, length: { maximum: 1000 }
+  validates :display_name , presence: true
+  validates :name , presence: true
 
   has_many :favorites, dependent: :destroy
   has_many :posts, dependent: :destroy
