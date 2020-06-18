@@ -1,7 +1,8 @@
 <div class="login-form">
-  <h2>Log in</h2>
+  <h2>ログイン</h2>
   <div class="sign_up_form">
     <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    　<%= flash[:alert]%>
       <div class="field">
         <%= f.email_field :email,
                     required: false,

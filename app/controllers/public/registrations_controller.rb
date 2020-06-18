@@ -4,7 +4,7 @@ class Public::RegistrationsController < Devise::RegistrationsController
   def after_sign_up_path_for(resource)
     user = User.find_by(email: resource[:email])
     flash[:notice] = "Welcome! You have signed up successfully."
-    edit_user_path(user)
+    user_path(user)
   end
 
 
@@ -13,5 +13,4 @@ class Public::RegistrationsController < Devise::RegistrationsController
     flash[:notice] = "successfully."
     user_path(user)
   end
-
 end
