@@ -31,6 +31,11 @@ class Public::EntriesController < ApplicationController
     if  current_user.check_entry(@work) == nil
       @entry = current_user.entries.create(work_id: @work.id, points_when_applying: @work.reward)
       Room.create(entry_id: @entry.id)
+    else
+      redirect_to root_path, flash: {
+        obj: @work,
+        error_messages: 'エラーが発生しました'
+      }
     end
   end
 
@@ -38,17 +43,19 @@ class Public::EntriesController < ApplicationController
     entry = Entry.find(params[:id])
     work = Work.with_deleted.find(entry.work_id)
     if current_user == work.user
-      entry.working_status = params[:entry][:working_status]
       if params[:entry][:working_status] == 'confirmed'  ##ステータスを確定に更新するとき
         if entry.points_when_applying > current_user.point
           @room = entry.room
           @work = work
-          render 'public/rooms/show'
+          flash.now[:error_messages] = 'ポイントが足りません'
+          redirect_to room_path(@room)
         else
+          entry.working_status = params[:entry][:working_status]
           entry.save
           redirect_to room_path(entry.room)
         end
       elsif params[:entry][:working_status] == 'completed'  ##ステータスを処理済みに更新するとき
+        entry.working_status = params[:entry][:working_status]
         entry.save
         entry.user.update(point: entry.user.point + entry.points_when_applying)
         work.user.update(point: work.user.point - entry.points_when_applying)

@@ -7,7 +7,7 @@
 
       <div class="field">
         <%= f.label 'メールアドレス' %><br>
-        <%= f.text_field :email, :size=>"60",
+        <%= f.text_field :email, :size=>"40",
                     required: true,
                     autofocus: true,
                     input_html: { autocomplete: "email" } %>
@@ -15,7 +15,7 @@
 
       <div class="field">
         <%= f.label 'パスワード' %><br>
-        <%= f.password_field :password, :size=>"60" ,
+        <%= f.password_field :password, :size=>"40" ,
                     required: true,
                     hint: ("#{@minimum_password_length} パスワードが短すぎます" if @minimum_password_length),
                     input_html: { autocomplete: "new-password" }%>
@@ -23,14 +23,14 @@
 
       <div class="field">
         <%= f.label 'パスワード確認用' %><br>
-        <%= f.password_field :password_confirmation, :size=>"60",
+        <%= f.password_field :password_confirmation, :size=>"40",
                     required: true,
                     input_html: { autocomplete: "new-password" } %>
       </div>
       
       <div class="field">
         <%= f.label '名前' %><br>
-        <%= f.text_field :name, :size=>"60" %>
+        <%= f.text_field :name, :size=>"40" %>
       </div>
 
       <div class="field">
@@ -40,12 +40,15 @@
 
       <div class="field">
         <%= f.label '表示名' %><br>
-        <%= f.text_field :display_name, :size=>"60" %>
+        <%= f.text_field :display_name, :size=>"40" %>
       </div>
 
+      <div class='field'>
+        <h4>↓以下項目は後からでも入力できます</h4>
+      </div>
       <div class="field">
         <%= f.label '電話番号' %><br>
-        <%= f.text_field :phone_number, :size=>"60" %>
+        <%= f.text_field :phone_number, :size=>"40" %>
       </div>
 
       <div class="field">

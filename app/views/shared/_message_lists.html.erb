@@ -1,15 +1,18 @@
 <h2>メッセージ</h2>
 <% @room.messages.each do |msg| %>
-  <% if msg.user == @room.entry.user %>
+  <% if msg.user == @room.entry.user && msg != nil %>
     <div class="applied_user_msg msg-list clearfix">
       <div class="user-show-link-r">
         <%= link_to(msg.user) do %>
-            <%= attachment_image_tag(msg.user, :profile_image, :fill, 60, 60, format: 'jpeg' ) %>
+            <%= attachment_image_tag(msg.user, :profile_image, :fill, 60, 60, format: 'jpeg' ) %><br>
             <p><%= msg.user.display_name %></p>
         <% end %>
       </div>
-      <div class="message-content-r">
-        <p><%= msg.message %></p>
+      <div class="msg-right">
+        <div class='message-date-r'><p><%= msg.set_date %></p></div>
+        <div class="message-content-r">
+          <p><%= msg.message %></p>
+        </div>
       </div>
     </div>
   <% else %>
@@ -20,6 +23,7 @@
             <p><%= msg.user.display_name %></p>
         <% end %>
       </div>
+      <div class='message-date'><%= msg.set_date %></div>
       <div class="message-content">
         <p><%= msg.message %></p>
       </div>

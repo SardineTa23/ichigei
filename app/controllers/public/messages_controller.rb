@@ -4,7 +4,11 @@ class Public::MessagesController < ApplicationController
     @room = Room.find(params[:room_id])
     @message = current_user.messages.new(message_params)
     @message.room_id = @room.id
-    @message.save
+    unless @message.save
+      @entry = @room.entry
+      @work = Work.with_deleted.find(@entry.work_id)
+      render 'public/rooms/show'
+    end
   end
 
   private

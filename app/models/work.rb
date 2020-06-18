@@ -10,6 +10,14 @@ class Work < ApplicationRecord
                              recruitment_suspended: 1,
                               end_recruitment: 2 }
 
+  validates :title, presence: true
+  validates :description, presence: true
+  validates :condition, presence: true
+  validates :started_at, presence: true
+  validates :ended_at, presence: true
+  validates :reward, presence: true
+  
+
   ##住所検索
   include JpPrefecture
   jp_prefecture :prefecture_code

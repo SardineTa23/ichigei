@@ -1,5 +1,7 @@
-<h2>募集の新規登録</h2>
-<%= form_for(@work) do |f|%>
+<div class="work-form">
+  <h2>募集の新規登録</h2>
+  <%= render 'layouts/errors', obj: @work %>
+  <%= form_for(@work) do |f|%>
   <div class="field">
     <%= f.label '求人タイトル'%><br>
     <%= f.text_field :title, :size=>"60" %>
@@ -88,19 +90,9 @@
     %>
   </div>
   
-  <div class="field row">
-  </div>
-  <div class="field row">
-  </div>
-  <div class="field row">
-  </div>
-  <div class="field row">
-  </div>
-  <div class="field row">
-  </div>
-
   <div>
-  　　<%= f.submit '求人を作成する' , class: "btn btn-primary col-xs-5"%>
+  　　<%= f.submit '求人を作成する' , class: "btn btn-primary"%>
   </div>
   
 <% end %>
+</div>

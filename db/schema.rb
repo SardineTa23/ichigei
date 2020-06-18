@@ -142,17 +142,17 @@ ActiveRecord::Schema.define(version: 2020_06_16_153409) do
     t.string "title", null: false
     t.text "description"
     t.text "condition"
-    t.string "postal_code", default: "", null: false
-    t.string "address_city", default: "", null: false
-    t.string "address_street", default: "", null: false
-    t.string "address_building", default: "", null: false
+    t.string "postal_code", default: ""
+    t.string "address_city", default: ""
+    t.string "address_street", default: ""
+    t.string "address_building", default: ""
     t.datetime "deleted_at"
     t.datetime "started_at", default: -> { "CURRENT_TIMESTAMP" }
     t.datetime "ended_at", default: -> { "CURRENT_TIMESTAMP" }
     t.integer "reward"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "prefecture_code", null: false
+    t.integer "prefecture_code"
   end
 
 end

@@ -8,10 +8,10 @@ class CreateWorks < ActiveRecord::Migration[5.2]
       t.string :title, null: false
       t.text :description
       t.text :condition
-      t.string :postal_code, null: false, default: ""
-      t.string :address_city, null: false, default: "" 
-      t.string :address_street, null: false, default: "" 
-      t.string :address_building, null: false, default: "" 
+      t.string :postal_code, default: ""
+      t.string :address_city, default: "" 
+      t.string :address_street, default: "" 
+      t.string :address_building, default: "" 
       t.datetime :deleted_at
       t.datetime :started_at
       t.datetime :ended_at

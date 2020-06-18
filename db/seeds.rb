@@ -14,6 +14,7 @@
   password = "password"
   user = User.create!(name:  name,
                email: email,
+               display_name: name,
                password: password,
                password_confirmation: password)
   title = "#{n+1}"
@@ -23,7 +24,7 @@
   reward = n + 50
   5.times do |e|
     user.posts.create!(title: "Post#{title}", content: "Post#{content}", url: "Post#{url}")
-    user.works.create!(title: "Work#{title}", description: "Work#{content}", condition: "Work#{condition}", reward: reward)
+    user.works.create!(title: "Work#{title}", description: "Work#{content}", condition: "Work#{condition}", reward: reward, started_at: Time.zone.now, ended_at: Time.zone.now)
   end
 end
 

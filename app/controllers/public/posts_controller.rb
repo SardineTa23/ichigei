@@ -17,7 +17,9 @@ class Public::PostsController < ApplicationController
       redirect_to user_path(current_user)
     else
       @user = current_user
-      render 'public/users/show'
+      @q = Post.ransack(params[:q])
+      @posts = @q.result(distinct: true).page(params[:page]).per(15).order(created_at: :desc)
+      render :index 
     end
   end
 

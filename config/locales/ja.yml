@@ -214,6 +214,11 @@ ja:
         remember_me: "次回から自動的にログイン"
     models:
       user: "ユーザ"
+      post: 'イチゲイ'
+      attributes:
+        post:
+          title: タイトル
+          content: 内容
   devise:
     confirmations:
       new:
