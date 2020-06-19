@@ -127,7 +127,7 @@ main {
   margin-left: 40px;
 }
 
-h2,
+h1,h2,
 h3 {
   font-weight: bold;
 }
@@ -137,6 +137,35 @@ h3 {
   margin: 0 auto;
   margin-bottom: 10px;
 }
+
+.main-content {
+  min-height: 600px;
+}
+
+.top-content {
+  width: 60%;
+  margin: 20px auto;
+}
+
+.top-content p {
+  font-size: 21px;
+  font-weight: bold;
+  line-height: 3;
+}
+
+.top-content a {
+  display: inline;
+}
+
+.main-title {
+  margin: 20px auto;
+  width: 60%;
+}
+
+.main-title {
+  font-size: 40px;
+}
+
 
 .login-form {
   border: 2px solid black;
