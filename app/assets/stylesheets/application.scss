@@ -108,6 +108,11 @@ footer {
   float: left;
 }
 
+.footer-left a {
+  color: #f37c7c;
+  display: inline-block;
+}
+
 .footer-right {
   float: left;
 }
@@ -166,6 +171,9 @@ h3 {
   font-size: 40px;
 }
 
+.ichigei {
+  color: #f37c7c;
+}
 
 .login-form {
   border: 2px solid black;
