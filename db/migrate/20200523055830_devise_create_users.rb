@@ -44,7 +44,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
       t.text :introduction
       t.string :profile_image_id, null: false, default: ''
       t.integer :status, null: false, default: 0
-      t.integer :point, null: false, default: 0
+      t.integer :point, null: false, default: 3000
       t.integer :prefecture_code, null: false, default: 0
       t.date :birth_date
 

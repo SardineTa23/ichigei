@@ -123,7 +123,7 @@ ActiveRecord::Schema.define(version: 2020_06_16_153409) do
     t.text "introduction"
     t.string "profile_image_id", default: "", null: false
     t.integer "status", default: 0, null: false
-    t.integer "point", default: 0, null: false
+    t.integer "point", default: 3000, null: false
     t.integer "prefecture_code", default: 0, null: false
     t.date "birth_date"
     t.datetime "created_at", null: false
