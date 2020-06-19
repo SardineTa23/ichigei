@@ -38,7 +38,7 @@ services:
   # MySQLコンテナ定義
   db:
     # mysqlを使用してコンテナ作成
-    image: mysql:5.7
+    image: mysql:5.7.22
     volumes:
       # Mysql8.0のデフォルトの認証形式をmysql_native_passwordに設定
       - ./mysql-confd:/etc/mysql/conf.d

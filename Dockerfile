@@ -13,6 +13,7 @@ COPY ./Gemfile /mimes/Gemfile
 COPY ./Gemfile.lock /mimes/Gemfile.lock
 # Gemのインストール実行
 RUN bundle install
+RUN apt-get install -y vim
 # ローカルのsrcをコピー
 COPY . /mimes
 ENV LANG C.UTF-8　
