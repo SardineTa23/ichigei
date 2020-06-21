@@ -29,7 +29,7 @@
  - 郵便番号から住所自動入力
  - 所持ポイント機能
 
-# Download
+# Download(要docker環境)
 
 **ダウンロード後のステップ**
 
@@ -39,26 +39,42 @@
 $ git clone https://github.com/k-iwashita/ichigei.git
 ```
 
-2. クローン先へ移動する
+2. ImageMagick インストール(必要に応じて)
+macの方
+```bash
+$ brew install ImageMagick
+```
+その他
+```bash
+$ sudo yum install -y ImageMagick ImageMagick-devel
+```
+
+3. クローン先へ移動する
 
 ```bash
 $ cd ichigei
 ```
 
-3. dockerの立ち上げ
+4. dockerの立ち上げ
 
 ```bash
 $ docker-compose build
 ```
 
-4. migrationとseedを通す
+5. migrationとseedを通す
 
 ```bash
 $ rails db:migrate
 $ rails db:seed
 ```
 
-5. ローカルホストへ
+6. サーバーの立ち上げ
+
+```bash
+$ docker-compose up -d
+```
+
+7. ローカルホストへ
 
 ```bash
 $ http://localhost:3000/ へアクセス
