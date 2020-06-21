@@ -19,15 +19,15 @@ class Public::UsersController < ApplicationController
     end
 
     if @labor_evaluations != [] && @employer_evaluations != []  ##労働評価、雇い人評価が両方ある場合
-      @employer_evaluation_ave  = employer_sum / @employer_evaluations.count
-      @labor_evaluation_ave = labar_sum / @labor_evaluations.count
-      @total_evaluation_ave = (labar_sum + employer_sum) / (@employer_evaluations.count + @labor_evaluations.count)
+      @employer_evaluation_ave  = (employer_sum.to_f / @employer_evaluations.count).round(1)
+      @labor_evaluation_ave = (labar_sum.to_f / @labor_evaluations.count).round(1)
+      @total_evaluation_ave = ((labar_sum + employer_sum).to_f / (@employer_evaluations.count + @labor_evaluations.count)).round(1)
     elsif @labor_evaluations != [] && @employer_evaluations == []  ##雇い人評価がある場合
       @employer_evaluation_ave  = 0
-      @labor_evaluation_ave = labar_sum / @labor_evaluations.count
+      @labor_evaluation_ave = (labar_sum.to_f / @labor_evaluations.count).round(1)
       @total_evaluation_ave = @labor_evaluation_ave
     elsif @labor_evaluations == [] && @employer_evaluations != []  ##労働評価が両方ある場合
-      @employer_evaluation_ave  = employer_sum / @employer_evaluations.count
+      @employer_evaluation_ave  = (employer_sum.to_f / @employer_evaluations.count).round(1)
       @labor_evaluation_ave = 0
       @total_evaluation_ave = @employer_evaluation_ave
     else  ##両方ない場合
