@@ -85,7 +85,7 @@
     </div>
 
     <%= f.submit "プロフィールを更新する", class: 'btn btn-primary' %>
-    <%= button_to '退会する', user_path(@user), method: :delete, params: {user_id: @user.id}, class: 'button', data: {confirm: '本当に退会しますか？'} %>
+    <%= link_to '退会する', user_path(@user), method: :delete, params: {user_id: @user.id}, class: 'button', data: {confirm: '本当に退会しますか？'} %>
   <% end %>
 </div>
 

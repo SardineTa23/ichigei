@@ -77,8 +77,10 @@ $ http://localhost:3000/ へアクセス
  - docker-compose (仮想環境)
  - EC2 (サーバー)
  - RDS (DBサーバー)
+ - S3 (画像の保存先)
  - Route53 (ドメイン、IPアドレスの設定)
  - VPC
+ - IAM
  - nginx
  - Certbot (https通信のため)
  - GCP(google map API) (Google mapの表示)
