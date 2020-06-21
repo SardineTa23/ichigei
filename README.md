@@ -79,6 +79,7 @@ $ http://localhost:3000/ へアクセス
  - RDS (DBサーバー)
  - Route53 (ドメイン、IPアドレスの設定)
  - VPC
+ - nginx
  - Certbot (https通信のため)
  - GCP(google map API) (Google mapの表示)
 
@@ -89,6 +90,8 @@ $ http://localhost:3000/ へアクセス
 - [ ] 自動デプロイ
 - [ ] テストの充実
 - [ ] 画像の複数枚投稿
+- [ ] 管理者機能
+- [ ] カテゴリーの作成（管理者）
 - [ ] カテゴリーの階層化
 - [ ] メッセージの完全自動化
 - [ ] Vue.jsを使ったフロントコーディング
