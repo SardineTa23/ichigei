@@ -40,11 +40,11 @@ $ git clone https://github.com/k-iwashita/ichigei.git
 ```
 
 2. ImageMagick インストール(必要に応じて)
-macの方
+ - macの方
 ```bash
 $ brew install ImageMagick
 ```
-その他
+ - その他
 ```bash
 $ sudo yum install -y ImageMagick ImageMagick-devel
 ```
