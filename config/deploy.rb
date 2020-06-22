@@ -2,7 +2,7 @@
 lock "~> 3.14.1"
 
 set :application, "ichigei"
-set :repo_url, "git@github.com:k-iwashita/Mimes.git"
+set :repo_url, "git@github.com:k-iwashita/ichigei.git"
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
