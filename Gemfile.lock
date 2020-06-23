@@ -130,6 +130,11 @@ GEM
     erubi (1.9.0)
     eventmachine (1.2.7)
     execjs (2.7.0)
+    factory_bot (6.0.2)
+      activesupport (>= 5.0.0)
+    factory_bot_rails (6.0.0)
+      factory_bot (~> 6.0.0)
+      railties (>= 5.0.0)
     ffi (1.12.2)
     geocoder (1.6.3)
     globalid (0.4.2)
@@ -392,6 +397,7 @@ DEPENDENCIES
   devise-i18n-views
   dotenv-rails
   enum_help
+  factory_bot_rails
   geocoder
   gmaps4rails
   jbuilder (~> 2.5)
