@@ -10,11 +10,16 @@
     <div class="status_change">
       <%= render 'shared/error_messages' %>
       <% entry = @room.entry %>
-      <% if current_user == @work.user && @room.entry.working_status_i18n != "処理済み" %>
-        <%= form_for(@room.entry, method: :patch)do |f| %>
-          <%= f.select :working_status, Entry.working_statuses_i18n.keys.map { |k| [Entry.working_statuses_i18n[k], k] } %>
-          <%= f.submit %>
-        <% end %>
+      <% if current_user == @work.user && @room.entry.working_status_i18n == "未確定" %>
+        <div class="working-status">
+          <h4>処理状態：<%= entry.working_status_i18n %></h4>
+          <%= link_to '確定にする', entry_path(entry), method: :patch %>
+        </div>
+      <% elsif current_user == @work.user && @room.entry.working_status_i18n == "確定済み" %>
+        <div class="working-status">
+          <h4>処理状態：<%= entry.working_status_i18n %></h4>
+          <%= link_to '完了にする', entry_path(entry), method: :patch %>
+        </div>
       <% elsif @room.entry.working_status_i18n == "処理済み" && current_user == entry.user && entry.employer_evaluation == nil %>
         <p>1~5で評価してください</p>
         <% 5.times do |n| %>

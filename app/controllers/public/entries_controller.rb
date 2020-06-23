@@ -40,26 +40,25 @@ class Public::EntriesController < ApplicationController
   end
 
   def update
-    entry = Entry.find(params[:id])
-    work = Work.with_deleted.find(entry.work_id)
-    if current_user == work.user
-      if params[:entry][:working_status] == 'confirmed'  ##ステータスを確定に更新するとき
-        if entry.points_when_applying > current_user.point
-          @room = entry.room
-          @work = work
+    @entry = Entry.find(params[:id])
+    @work = Work.with_deleted.find(@entry.work_id)
+    if current_user == @work.user
+      if @entry.working_status_i18n == '未確定'  ##ステータスを確定に更新するとき
+        if @entry.points_when_applying > current_user.point
+          @room = @entry.room
           flash.now[:error_messages] = 'ポイントが足りません'
-          redirect_to room_path(@room)
+          render 'public/rooms/show'
         else
-          entry.working_status = params[:entry][:working_status]
-          entry.save
-          redirect_to room_path(entry.room)
+          @entry.working_status = 'confirmed'
+          @entry.save
+          redirect_to room_path(@entry.room)
         end
-      elsif params[:entry][:working_status] == 'completed'  ##ステータスを処理済みに更新するとき
-        entry.working_status = params[:entry][:working_status]
-        entry.save
-        entry.user.update(point: entry.user.point + entry.points_when_applying)
-        work.user.update(point: work.user.point - entry.points_when_applying)
-        redirect_to room_path(entry.room)
+      elsif @entry.working_status_i18n == '確定済み'  ##ステータスを処理済みに更新するとき
+        @entry.working_status = 'completed'
+        @entry.save
+        @entry.user.update(point: @entry.user.point + @entry.points_when_applying)
+        @work.user.update(point: @work.user.point - @entry.points_when_applying)
+        redirect_to room_path(@entry.room)
       end
     end
   end

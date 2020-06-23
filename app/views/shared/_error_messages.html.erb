@@ -3,9 +3,6 @@
   <div class="alert alert-danger">
     <ul>
       <%= flash[:error_messages]%>
-      <% flash.each do |message_type, msg| %>
-        <li><%= msg %></li>
-      <% end %>
     </ul>
   </div>
 <% end %>
