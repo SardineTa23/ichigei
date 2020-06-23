@@ -1,5 +1,5 @@
 class Public::PostsController < ApplicationController
-  
+  before_action :authenticate_user!
   def index
     @q = Post.ransack(params[:q])
     @posts = @q.result(distinct: true).page(params[:page]).per(15).order(created_at: :desc)

@@ -1,4 +1,5 @@
 class Public::RoomsController < ApplicationController
+  before_action :authenticate_user!
   def show
     @room = Room.find(params[:id])
     @entry = @room.entry
