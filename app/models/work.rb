@@ -10,7 +10,11 @@ class Work < ApplicationRecord
                              recruitment_suspended: 1,
                               end_recruitment: 2 }
 
-  validates :title, presence: true
+  validates :title,
+    presence: true,
+    uniqueness: true,
+    length: { maximum: 20,
+               minimum: 2 }
   validates :description, presence: true
   validates :condition, presence: true
   validates :started_at, presence: true
