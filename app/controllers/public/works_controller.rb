@@ -1,5 +1,6 @@
 class Public::WorksController < ApplicationController
   before_action :authenticate_user!
+  before_action :correct_user, only: [:edit, :update]
   def index
     @q = Work.where(recruitment_status: 0).ransack(params[:q])
     @works = @q.result(distinct: true).page(params[:page]).per(15).order(created_at: :desc)
@@ -67,5 +68,12 @@ class Public::WorksController < ApplicationController
     def work_params
       params.require(:work).permit(:title, :description, :condition,:started_at, :ended_at, :reward, :recruitment_status, :image,
                                    :postal_code, :prefecture_code, :prefecture_name, :address_city, :address_street, :address_building, :category_id)                          
+    end
+
+    def correct_user
+      work = Work.find(params[:id])
+      if current_user != work.user
+        redirect_to user_path(current_user)
+      end
     end
 end
